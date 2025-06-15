@@ -1,3 +1,4 @@
+
 import React, { useRef } from "react";
 import Sidebar from "@/components/Sidebar";
 import HeroSection from "@/components/HeroSection";
@@ -7,7 +8,6 @@ import ExperienceSection from "@/components/ExperienceSection";
 import ContactSection from "@/components/ContactSection";
 import AchievementsSection from "@/components/AchievementsSection";
 import ExtraCurricularSection from "@/components/ExtraCurricularSection";
-import MainDarkToggle from "@/components/MainDarkToggle";
 
 const sectionDescriptions = {
   experience: "My professional journey and the roles that have shaped my career",
@@ -27,18 +27,21 @@ const Index = () => {
       <main
         ref={mainScrollRef}
         className="
-          flex-1
+          ml-[25vw]
+          w-[75vw]
+          max-w-[1100px]
           h-screen
           overflow-y-auto
-          md:ml-[240px]
           flex flex-col
-          w-full
-          px-2 sm:px-4 md:px-8
+          px-2 sm:px-6 md:px-10
           pt-0
+          min-h-screen
+          transition-all
         "
+        style={{ marginLeft: "25vw" }}
       >
         {/* Hero Section */}
-        <section className="mt-2 mb-0" id="herosection">
+        <section className="mt-4 mb-0" id="herosection">
           <HeroSection />
         </section>
         {/* Work Experience */}
