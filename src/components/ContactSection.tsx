@@ -1,9 +1,9 @@
-
 import React from "react";
 import { Mail, Phone, Linkedin, Instagram, Github, Youtube } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import Footer from "./Footer";
 
 const CONTACT_EMAIL = "your.email@example.com";
 const CONTACT_PHONE = "+1 234 567 8900";
@@ -156,6 +156,8 @@ const ContactSection = () => {
           </form>
         </div>
       </div>
+      {/* Footer */}
+      <Footer />
     </section>
   );
 };
