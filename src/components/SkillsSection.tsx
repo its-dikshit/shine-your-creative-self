@@ -15,10 +15,18 @@ const skills = [
 const topText = "The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.";
 
 const SkillsSection = () => (
-  <section id="skills" className="max-w-4xl mx-auto py-20 px-4 bg-card dark:bg-card border border-gray-100 dark:border-slate-800 rounded-2xl shadow-lg transition-all">
+  <section
+    id="skills"
+    className={`
+      max-w-4xl mx-auto py-20 px-4 
+      bg-card dark:bg-gradient-to-br dark:from-[#1f2340] dark:via-[#2b344d] dark:to-[#323e54]
+      border border-gray-100 dark:border-slate-800 
+      rounded-2xl shadow-lg transition-all
+    `}
+  >
     <div className="mb-2 text-xs uppercase tracking-[0.35em] text-gray-400 font-semibold" style={{letterSpacing: "0.32em"}}>My Specialty</div>
     <h2
-      className="text-3xl sm:text-4xl font-bold font-playfair mb-6 tracking-widest text-black dark:text-white"
+      className="text-3xl sm:text-4xl font-bold font-playfair mb-6 tracking-widest text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-blue-400 dark:via-cyan-300 dark:to-purple-300"
       style={{ letterSpacing: ".08em", fontFamily: "'Playfair Display',serif" }}
     >
       MY SKILLS

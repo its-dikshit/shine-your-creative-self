@@ -78,16 +78,26 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
       : "text-gray-700 dark:text-gray-200";
 
   return (
-    <ShadcnSidebar className="w-[20vw] min-w-[160px] max-w-[300px] bg-[#f5f7fa] dark:bg-[#111827] border-r border-sidebar-border transition-colors flex flex-col items-center h-screen">
+    <ShadcnSidebar
+      className="
+        w-[20vw] min-w-[160px] max-w-[300px]
+        bg-[#f5f7fa] dark:bg-gradient-to-b dark:from-[#151e35] dark:via-[#1d2740] dark:to-[#232942]
+        border-r border-sidebar-border transition-colors flex flex-col items-center h-screen
+      "
+    >
       <SidebarContent className="flex flex-col items-center w-full p-0">
         <div className="w-full flex flex-col items-center pt-6 pb-4">
           <Avatar className="h-24 w-24 mb-1 shadow-lg border-4 border-blue-500 bg-white dark:bg-slate-800 transition-colors mt-0">
             <AvatarImage src="/lovable-uploads/354854ad-c8f8-4202-be31-5587a92fb34c.png" alt="Profile photo" />
             <AvatarFallback>JF</AvatarFallback>
           </Avatar>
-          <h1 className="text-[1.32rem] font-extrabold mb-1 uppercase tracking-wide text-black dark:text-white text-center leading-none">Jackson Ford</h1>
+          <h1 className="text-[1.32rem] font-extrabold mb-1 uppercase tracking-wide text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-blue-300 dark:via-indigo-400 dark:to-cyan-300 text-center leading-none">
+            Jackson Ford
+          </h1>
           <div className="flex flex-row gap-2 items-center text-sm text-center mb-1 justify-center w-full">
-            <span className="font-bold text-blue-500 tracking-widest">UI/UX Designer</span>
+            <span className="font-bold text-blue-500 tracking-widest dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-cyan-400 dark:via-indigo-300 dark:to-blue-400">
+              UI/UX Designer
+            </span>
             <ThemeToggleButton />
           </div>
         </div>
@@ -115,7 +125,7 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
                     fontWeight: sectionId === "herosection" && activeSection === "herosection" ? 700 : 500,
                   }}
                 >
-                  {label}
+                  <span className="dark:bg-gradient-to-r dark:from-blue-400 dark:to-cyan-400 dark:bg-clip-text dark:text-transparent transition-all">{label}</span>
                 </a>
               </li>
             ))}
@@ -127,7 +137,7 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
           </div>
           <div className="flex justify-center gap-2 mt-2">
             {["facebook", "twitter", "linkedin"].map((icon) => (
-              <a key={icon} href="#" aria-label={icon} className="hover:text-blue-500 text-gray-400 dark:text-gray-500 transition-colors hover:scale-110 interactive-link">
+              <a key={icon} href="#" aria-label={icon} className="hover:text-blue-500 text-gray-400 dark:text-gray-300 transition-colors hover:scale-110 interactive-link">
                 <svg width="18" height="18" fill="currentColor" className="transition-colors">
                   <circle cx="9" cy="9" r="8" />
                 </svg>

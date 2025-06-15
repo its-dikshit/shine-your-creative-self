@@ -30,7 +30,7 @@ const projects = [
 
 const ProjectsSection = () => (
   <section id="projects" className="max-w-6xl mx-auto my-20 px-6">
-    <h2 className="text-3xl font-bold mb-10 text-black dark:text-white">Projects</h2>
+    <h2 className="text-3xl font-bold mb-10 text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-blue-400 dark:via-cyan-300 dark:to-purple-400">Projects</h2>
     <div className="grid md:grid-cols-3 gap-8">
       {projects.map((project, idx) => (
         <a
@@ -38,7 +38,7 @@ const ProjectsSection = () => (
           href={project.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-card dark:bg-card rounded-xl overflow-hidden shadow-lg group hover-scale transition-all duration-200 animate-fade-in flex flex-col border border-gray-100 dark:border-slate-800"
+          className="bg-card dark:bg-gradient-to-br dark:from-[#222c47] dark:via-[#314264] dark:to-[#1c2339] rounded-xl overflow-hidden shadow-lg group hover-scale transition-all duration-200 animate-fade-in flex flex-col border border-gray-100 dark:border-slate-800"
         >
           <img
             src={project.image}
@@ -51,9 +51,9 @@ const ProjectsSection = () => (
             }}
           />
           <div className="p-6 flex-1 flex flex-col justify-between">
-            <h3 className="text-xl font-semibold mb-2 text-black dark:text-white">{project.title}</h3>
-            <p className="text-muted-foreground mb-4 flex-1">{project.description}</p>
-            <span className="mt-auto text-primary font-medium underline-offset-2 group-hover:underline">
+            <h3 className="text-xl font-semibold mb-2 text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-blue-200 dark:via-cyan-200 dark:to-purple-200">{project.title}</h3>
+            <p className="text-muted-foreground mb-4 flex-1 dark:text-gray-300">{project.description}</p>
+            <span className="mt-auto text-primary font-medium underline-offset-2 group-hover:underline dark:bg-gradient-to-r dark:from-blue-400 dark:to-purple-400 dark:bg-clip-text dark:text-transparent">
               View Project &rarr;
             </span>
           </div>
