@@ -15,7 +15,7 @@ const Index = () => {
   return (
     <div className="bg-background text-foreground min-h-screen w-full flex">
       <Sidebar />
-      <main className="flex-1 md:ml-[250px] min-h-screen">
+      <main className="flex-1 md:ml-[340px] min-h-screen">
         <HeroSection />
         <AboutSection />
         <ServicesSection />
