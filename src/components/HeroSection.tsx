@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -33,7 +32,7 @@ const HeroSection = () => {
             <span
               role="img"
               aria-label="wave"
-              className="select-none dark:filter dark:brightness-125 dark:saturate-200 dark:hue-rotate-20 transition-all"
+              className="select-none transition-all"
             >👋🏻</span>{" "}
             Hello, I'm
           </p>
@@ -81,4 +80,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
