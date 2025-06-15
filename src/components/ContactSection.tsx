@@ -56,7 +56,26 @@ const ContactSection = () => {
   return (
     <section id="contact" className="w-full bg-white dark:bg-background py-16 px-2 md:px-0 text-black dark:text-white relative">
       <div className="max-w-5xl mx-auto mb-8 px-2 flex items-center justify-between">
-        <h1 className="text-4xl font-extrabold font-playfair tracking-tight">Contact Me</h1>
+        {/* Gradient heading */}
+        <h1
+          className="
+            text-4xl
+            font-extrabold
+            font-playfair
+            tracking-tight
+            bg-gradient-to-r
+            from-blue-500
+            via-fuchsia-500
+            to-pink-500
+            bg-clip-text
+            text-transparent
+            dark:from-blue-400
+            dark:via-fuchsia-500
+            dark:to-pink-400
+          "
+        >
+          Contact Me
+        </h1>
       </div>
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
         {/* Left: Contact info (scrollable if overflow) */}
@@ -151,10 +170,24 @@ const ContactSection = () => {
             />
             <Button
               type="submit"
-              className="w-full mt-2 rounded-lg font-semibold uppercase text-base bg-blue-500 hover:bg-blue-600 transition"
+              className="
+                w-full mt-2 rounded-lg font-semibold uppercase text-base
+                bg-blue-500 hover:bg-blue-600 transition
+                relative
+                overflow-hidden
+                dark:bg-gradient-to-r
+                dark:from-blue-500
+                dark:via-fuchsia-500
+                dark:to-pink-400
+                dark:hover:from-blue-600
+                dark:hover:via-fuchsia-600
+                dark:hover:to-pink-500
+                dark:shadow-lg
+                dark:border-0
+                "
               style={{ minHeight: 44 }}
             >
-              Send Message
+              <span className="relative z-10">Send Message</span>
             </Button>
           </form>
         </div>
@@ -180,3 +213,4 @@ const ContactSection = () => {
 };
 
 export default ContactSection;
+
