@@ -33,62 +33,52 @@ const idMap: { [k: string]: string } = {
 };
 
 const Sidebar = () => {
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("herosection");
 
-  useEffect(() => {
-    // All section ids present in navLinks
-    const sectionIds = navLinks.map((nl) => {
-      if (nl.sectionId === "") return "herosection";
-      return nl.sectionId;
-    });
-
-    const elements = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
-
-    // If not present (e.g. services, education, experience, blog not implemented), skip them
-    const filteredNav = navLinks.filter((nl) => {
-      if (nl.sectionId === "") return !!document.getElementById("herosection");
-      return !!document.getElementById(nl.sectionId);
-    });
-
-    // Handler for highlighting active navlink on scroll
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          let bestId = "";
-          let bestTop = -Infinity;
-          elements.forEach((el, idx) => {
-            const rect = el.getBoundingClientRect();
-            // Section top close to viewport top, and visible
-            if (rect.top <= 120 && rect.top > bestTop) {
-              bestTop = rect.top;
-              bestId = sectionIds[idx];
-            }
-          });
-          setActiveSection(bestId || "herosection");
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    // Run on mount as well in case already scrolled
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-    // Re-run effect if any section is dynamically rendered later
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // For "HOME", target HeroSection wrapping element. Attach id if missing.
+  // Ensure hero section has id
   useEffect(() => {
     const hero = document.querySelector("section") || document.body.children[0];
     if (hero && !hero.id) {
       (hero as HTMLElement).id = "herosection";
     }
+  }, []);
+
+  useEffect(() => {
+    function handleScroll() {
+      // Build ordered list of navLinks with existing DOM elements
+      const navWithElements = navLinks
+        .map((nl) => {
+          const domId = nl.sectionId === "" ? "herosection" : nl.sectionId;
+          const el = document.getElementById(domId);
+          return el ? { ...nl, domId, el } : null;
+        })
+        .filter((x) => !!x) as Array<{ label: string; href: string; icon: any; sectionId: string; domId: string; el: HTMLElement }>;
+
+      let currentActive = navWithElements[0]?.domId || "herosection";
+      let bestTop = -Infinity;
+
+      for (const nav of navWithElements) {
+        const rect = nav.el.getBoundingClientRect();
+        // 120px padding from top is used to determine visibility
+        if (rect.top <= 120 && rect.top > bestTop) {
+          bestTop = rect.top;
+          currentActive = nav.domId;
+        }
+      }
+      setActiveSection(currentActive);
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Re-run on mount to catch initial state
+    handleScroll();
+
+    // Also listen for resize (could impact layout/section positions)
+    window.addEventListener("resize", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   const getActiveClass = (sectionId: string) =>
@@ -117,7 +107,6 @@ const Sidebar = () => {
                   className={`flex items-center gap-3 px-4 py-2 rounded-md hover:bg-primary/10 hover:text-primary transition font-semibold text-base tracking-widest uppercase ${getActiveClass(sectionId)}`}
                   aria-current={activeSection === (sectionId || "herosection") ? "page" : undefined}
                   tabIndex={0}
-                  // Enable keyboard focus
                 >
                   {Icon ? <Icon size={18} /> : <DotIcon />}
                   <span>{label}</span>
