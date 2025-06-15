@@ -39,24 +39,27 @@ const achievements = [
 
 const AchievementsSection = () => (
   <section id="achievements" className="max-w-5xl mx-auto py-20 px-4">
-    <h2 className="text-3xl sm:text-4xl font-bold mb-1 text-black font-playfair">Achievements & Recognition</h2>
-    <div className="text-gray-500 text-base font-light mb-10">
+    <h2 className="text-3xl sm:text-4xl font-bold mb-1 text-black dark:text-white font-playfair">Achievements & Recognition</h2>
+    <div className="text-gray-500 dark:text-gray-300 text-base font-light mb-10">
       Milestones and recognition that mark my professional journey
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
       {achievements.map((a, i) => (
-        <div key={a.title} className="relative rounded-2xl bg-gray-50 border border-gray-200 px-6 py-6 flex flex-col shadow-sm min-h-[170px]">
-          <span className="text-lg font-bold text-black mb-1">{a.title}</span>
+        <div
+          key={a.title}
+          className="relative rounded-2xl bg-gray-50 dark:bg-card border border-gray-200 dark:border-slate-800 px-6 py-6 flex flex-col shadow-sm min-h-[170px] transition-all"
+        >
+          <span className="text-lg font-bold text-black dark:text-white mb-1">{a.title}</span>
           <a
-            className="text-sm text-blue-600 font-semibold underline hover:text-blue-800 transition mb-1"
+            className="text-sm text-blue-600 dark:text-blue-400 font-semibold underline hover:text-blue-800 dark:hover:text-blue-300 transition mb-1"
             href={a.url}
             target="_blank"
             rel="noopener noreferrer"
           >
             {a.org}
           </a>
-          <span className="text-gray-500 text-base mb-2 font-normal">{a.description}</span>
-          <span className="absolute top-6 right-6 bg-gray-200 rounded-full px-3 text-xs font-semibold text-gray-500">{a.year}</span>
+          <span className="text-gray-500 dark:text-gray-300 text-base mb-2 font-normal">{a.description}</span>
+          <span className="absolute top-6 right-6 bg-gray-200 dark:bg-slate-700 rounded-full px-3 text-xs font-semibold text-gray-500 dark:text-gray-300">{a.year}</span>
         </div>
       ))}
     </div>

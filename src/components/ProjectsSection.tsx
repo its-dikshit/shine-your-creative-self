@@ -30,7 +30,7 @@ const projects = [
 
 const ProjectsSection = () => (
   <section id="projects" className="max-w-6xl mx-auto my-20 px-6">
-    <h2 className="text-3xl font-bold mb-10">Projects</h2>
+    <h2 className="text-3xl font-bold mb-10 text-black dark:text-white">Projects</h2>
     <div className="grid md:grid-cols-3 gap-8">
       {projects.map((project, idx) => (
         <a
@@ -38,16 +38,20 @@ const ProjectsSection = () => (
           href={project.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-card rounded-xl overflow-hidden shadow-lg group hover-scale transition-all duration-200 animate-fade-in flex flex-col"
+          className="bg-card dark:bg-card rounded-xl overflow-hidden shadow-lg group hover-scale transition-all duration-200 animate-fade-in flex flex-col border border-gray-100 dark:border-slate-800"
         >
           <img
             src={project.image}
             alt={project.title}
             className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
             loading="lazy"
+            style={{
+              background: "#e6eaf1",
+              borderBottom: "1px solid #f1f4fa"
+            }}
           />
           <div className="p-6 flex-1 flex flex-col justify-between">
-            <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+            <h3 className="text-xl font-semibold mb-2 text-black dark:text-white">{project.title}</h3>
             <p className="text-muted-foreground mb-4 flex-1">{project.description}</p>
             <span className="mt-auto text-primary font-medium underline-offset-2 group-hover:underline">
               View Project &rarr;

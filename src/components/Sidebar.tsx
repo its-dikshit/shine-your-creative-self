@@ -75,13 +75,13 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
   const getActiveClass = (sectionId: string) =>
     activeSection === (sectionId || "herosection")
       ? "text-blue-500 font-bold"
-      : "text-gray-700 dark:text-gray-300";
+      : "text-gray-700 dark:text-gray-200";
 
   return (
-    <ShadcnSidebar className="w-[20vw] min-w-[160px] max-w-[300px] bg-[#f5f7fa] dark:bg-sidebar text-sidebar-foreground border-r border-sidebar-border transition-colors flex flex-col items-center h-screen">
+    <ShadcnSidebar className="w-[20vw] min-w-[160px] max-w-[300px] bg-[#f5f7fa] dark:bg-[#111827] border-r border-sidebar-border transition-colors flex flex-col items-center h-screen">
       <SidebarContent className="flex flex-col items-center w-full p-0">
         <div className="w-full flex flex-col items-center pt-6 pb-4">
-          <Avatar className="h-24 w-24 mb-1 shadow-lg border-4 border-blue-500 bg-white dark:bg-neutral-900 transition-colors mt-0">
+          <Avatar className="h-24 w-24 mb-1 shadow-lg border-4 border-blue-500 bg-white dark:bg-slate-800 transition-colors mt-0">
             <AvatarImage src="/lovable-uploads/354854ad-c8f8-4202-be31-5587a92fb34c.png" alt="Profile photo" />
             <AvatarFallback>JF</AvatarFallback>
           </Avatar>
@@ -141,4 +141,3 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
 };
 
 export default Sidebar;
-
