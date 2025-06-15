@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import {
   Carousel,
@@ -57,7 +56,7 @@ const HeroSection = () => {
         </div>
         <div className="mt-10 md:mt-0 flex-1 flex justify-center md:justify-end">
           <Carousel
-            opts={{ loop: true, draggable: false }}
+            opts={{ loop: true }}
             className="w-full max-w-xs md:max-w-md"
             key={current}
           >
