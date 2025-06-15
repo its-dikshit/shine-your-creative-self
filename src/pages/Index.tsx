@@ -1,3 +1,4 @@
+
 import React, { useRef } from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import Sidebar from "@/components/Sidebar";
@@ -29,7 +30,6 @@ const Index = () => {
           ref={mainScrollRef}
           className="
             flex-1
-            max-w-[1100px]
             h-screen
             overflow-y-auto
             flex flex-col
