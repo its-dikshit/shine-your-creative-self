@@ -2,28 +2,26 @@
 import React from "react";
 import Sidebar from "@/components/Sidebar";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
-import ContactSection from "@/components/ContactSection";
-import ServicesSection from "@/components/ServicesSection";
-import EducationSection from "@/components/EducationSection";
+import ProjectsSection from "@/components/ProjectsSection";
 import ExperienceSection from "@/components/ExperienceSection";
-import BlogSection from "@/components/BlogSection";
+import ContactSection from "@/components/ContactSection";
+import AchievementsSection from "@/components/AchievementsSection";
+import ExtraCurricularSection from "@/components/ExtraCurricularSection";
+
+// Section order: Home, Work Experience, Skills, Projects, Achievements, Extra-Curricular, Contact Me
 
 const Index = () => {
   return (
     <div className="bg-background text-foreground min-h-screen w-full flex">
       <Sidebar />
-      <main className="flex-1 md:ml-[340px] min-h-screen">
+      <main className="flex-1 md:ml-[240px] min-h-screen">
         <HeroSection />
-        <AboutSection />
-        <ServicesSection />
-        <SkillsSection />
-        <EducationSection />
         <ExperienceSection />
+        <SkillsSection />
         <ProjectsSection />
-        <BlogSection />
+        <AchievementsSection />
+        <ExtraCurricularSection />
         <ContactSection />
       </main>
     </div>
@@ -31,3 +29,4 @@ const Index = () => {
 };
 
 export default Index;
+
