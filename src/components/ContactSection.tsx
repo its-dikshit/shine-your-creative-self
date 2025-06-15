@@ -1,12 +1,12 @@
 
 import React from "react";
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram, Moon, Sun } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import Footer from "./Footer";
-import { Switch } from "@/components/ui/switch";
-import { useTheme } from "next-themes";
+
+// Removed dark mode toggle from this section.
 
 const CONTACT_INFO = [
   {
@@ -53,25 +53,10 @@ const SOCIALS = [
 ];
 
 const ContactSection = () => {
-  // For dark mode toggle
-  const { theme, setTheme } = useTheme();
-  const isDark = theme === "dark";
-
   return (
     <section id="contact" className="w-full bg-white dark:bg-background py-16 px-2 md:px-0 text-black dark:text-white relative">
       <div className="max-w-5xl mx-auto mb-8 px-2 flex items-center justify-between">
         <h1 className="text-4xl font-extrabold font-playfair tracking-tight">Contact Me</h1>
-        {/* Dark Mode Toggle */}
-        <div className="flex items-center gap-2">
-          <Sun size={18} className="text-yellow-400" />
-          <Switch
-            checked={isDark}
-            onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
-            aria-label="Toggle dark mode"
-            className="data-[state=checked]:bg-blue-600 data-[state=unchecked]:bg-gray-200 focus:ring-2 focus:ring-blue-300 transition"
-          />
-          <Moon size={18} className="text-blue-700" />
-        </div>
       </div>
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
         {/* Left: Contact info (scrollable if overflow) */}
@@ -195,4 +180,3 @@ const ContactSection = () => {
 };
 
 export default ContactSection;
-
