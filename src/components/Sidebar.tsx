@@ -81,7 +81,7 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
     <ShadcnSidebar
       className="
         w-[20vw] min-w-[160px] max-w-[300px]
-        bg-[#f5f7fa] dark:bg-gradient-to-b dark:from-[#151e35] dark:via-[#1d2740] dark:to-[#232942]
+        bg-[#f5f7fa] dark:bg-gradient-to-b dark:from-[#171c2f] dark:to-[#253356]
         border-r border-sidebar-border transition-colors flex flex-col items-center h-screen
       "
     >
@@ -91,11 +91,11 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
             <AvatarImage src="/lovable-uploads/354854ad-c8f8-4202-be31-5587a92fb34c.png" alt="Profile photo" />
             <AvatarFallback>JF</AvatarFallback>
           </Avatar>
-          <h1 className="text-[1.32rem] font-extrabold mb-1 uppercase tracking-wide text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-blue-300 dark:via-indigo-400 dark:to-cyan-300 text-center leading-none">
+          <h1 className="text-[1.32rem] font-extrabold mb-1 uppercase tracking-wide text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-[#b0bff7] dark:to-[#38b2fc] text-center leading-none">
             Jackson Ford
           </h1>
           <div className="flex flex-row gap-2 items-center text-sm text-center mb-1 justify-center w-full">
-            <span className="font-bold text-blue-500 tracking-widest dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-cyan-400 dark:via-indigo-300 dark:to-blue-400">
+            <span className="font-bold text-blue-500 tracking-widest dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-[#7ea7eb] dark:to-[#4e7dcf]">
               UI/UX Designer
             </span>
             <ThemeToggleButton />
@@ -125,7 +125,7 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
                     fontWeight: sectionId === "herosection" && activeSection === "herosection" ? 700 : 500,
                   }}
                 >
-                  <span className="dark:bg-gradient-to-r dark:from-blue-400 dark:to-cyan-400 dark:bg-clip-text dark:text-transparent transition-all">{label}</span>
+                  <span className="dark:bg-gradient-to-r dark:from-[#b0bff7] dark:to-[#38b2fc] dark:bg-clip-text dark:text-transparent transition-all">{label}</span>
                 </a>
               </li>
             ))}
