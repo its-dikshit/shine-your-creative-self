@@ -3,9 +3,11 @@ import React from "react";
 import {
   Sidebar as ShadcnSidebar,
   SidebarContent,
+  SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import ThemeToggleButton from "./ThemeToggleButton";
+import { PanelLeft, PanelRight } from "lucide-react";
 
 const navLinks = [
   { label: "HOME", href: "#herosection", sectionId: "herosection" },
@@ -78,9 +80,24 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
       : "text-gray-700 dark:text-gray-300";
 
   return (
-    <ShadcnSidebar className="w-[20vw] min-w-[160px] max-w-[300px] bg-[#f5f7fa] dark:bg-sidebar text-sidebar-foreground border-r border-sidebar-border transition-colors flex flex-col items-center h-screen">
-      <SidebarContent className="flex flex-col items-center w-full p-0">
-        <div className="w-full flex flex-col items-center pt-6 pb-4">
+    <ShadcnSidebar className="w-[20vw] min-w-[160px] max-w-[300px] bg-[#f5f7fa] dark:bg-sidebar text-sidebar-foreground border-r border-sidebar-border transition-colors flex flex-col items-center h-screen relative">
+      {/* Sidebar toggle button (top left, visually attractive) */}
+      <div className="absolute left-4 top-4 md:static md:mt-4 md:flex md:justify-start w-full flex justify-start z-20">
+        <SidebarTrigger
+          className="
+            rounded-full p-2 bg-gradient-to-tr from-blue-500 to-indigo-500 
+            hover:from-blue-600 hover:to-indigo-600 shadow-lg
+            text-white transition-all duration-200
+            border-2 border-white dark:border-neutral-800
+            scale-100 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-300
+            "
+          aria-label="Toggle Sidebar"
+        >
+          <PanelLeft size={20} />
+        </SidebarTrigger>
+      </div>
+      <SidebarContent className="flex flex-col items-center w-full p-0 mt-6">
+        <div className="w-full flex flex-col items-center pt-2 pb-4">
           <Avatar className="h-24 w-24 mb-1 shadow-lg border-4 border-blue-500 bg-white dark:bg-neutral-900 transition-colors mt-0">
             <AvatarImage src="/lovable-uploads/354854ad-c8f8-4202-be31-5587a92fb34c.png" alt="Profile photo" />
             <AvatarFallback>JF</AvatarFallback>
@@ -141,4 +158,3 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
 };
 
 export default Sidebar;
-

@@ -1,6 +1,6 @@
 
 import React, { useRef } from "react";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import Sidebar from "@/components/Sidebar";
 import HeroSection from "@/components/HeroSection";
 import SkillsSection from "@/components/SkillsSection";
@@ -41,10 +41,7 @@ const Index = () => {
           "
           style={{}}
         >
-          {/* Toggle Button */}
-          <div className="fixed left-2 top-2 z-50 md:z-50 md:left-[22vw] md:top-4">
-            <SidebarTrigger />
-          </div>
+          {/* Removed Alt Toggle Button - it's now part of sidebar */}
           {/* Hero Section */}
           <section className="mt-4 mb-0" id="herosection">
             <HeroSection />
@@ -92,4 +89,3 @@ const Index = () => {
 };
 
 export default Index;
-
