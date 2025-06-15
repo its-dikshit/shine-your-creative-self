@@ -69,9 +69,10 @@ const ContactSection = () => {
             to-pink-500
             bg-clip-text
             text-transparent
-            dark:from-blue-400
-            dark:via-fuchsia-500
-            dark:to-pink-400
+            dark:bg-gradient-to-r
+            dark:from-[#232943]
+            dark:via-[#382a6d]
+            dark:to-[#673ab7]
           "
         >
           Contact Me
@@ -176,12 +177,12 @@ const ContactSection = () => {
                 relative
                 overflow-hidden
                 dark:bg-gradient-to-r
-                dark:from-blue-500
-                dark:via-fuchsia-500
-                dark:to-pink-400
-                dark:hover:from-blue-600
-                dark:hover:via-fuchsia-600
-                dark:hover:to-pink-500
+                dark:from-[#232943]
+                dark:via-[#382a6d]
+                dark:to-[#673ab7]
+                dark:hover:from-[#20264d]
+                dark:hover:via-[#473793]
+                dark:hover:to-[#835fdb]
                 dark:shadow-lg
                 dark:border-0
                 "

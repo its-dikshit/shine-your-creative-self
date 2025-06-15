@@ -19,14 +19,14 @@ const SkillsSection = () => (
     id="skills"
     className={`
       max-w-4xl mx-auto py-20 px-4 
-      bg-card dark:bg-gradient-to-br dark:from-[#1f2340] dark:via-[#2b344d] dark:to-[#323e54]
+      bg-card dark:bg-gradient-to-br dark:from-[#171f33] dark:via-[#232943] dark:to-[#382a6d]
       border border-gray-100 dark:border-slate-800 
       rounded-2xl shadow-lg transition-all
     `}
   >
     <div className="mb-2 text-xs uppercase tracking-[0.35em] text-gray-400 font-semibold" style={{letterSpacing: "0.32em"}}>My Specialty</div>
     <h2
-      className="text-3xl sm:text-4xl font-bold font-playfair mb-6 tracking-widest text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-blue-400 dark:via-cyan-300 dark:to-purple-300"
+      className="text-3xl sm:text-4xl font-bold font-playfair mb-6 tracking-widest text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-[#232943] dark:via-[#382a6d] dark:to-[#673ab7]"
       style={{ letterSpacing: ".08em", fontFamily: "'Playfair Display',serif" }}
     >
       MY SKILLS
@@ -88,3 +88,4 @@ const SkillsSection = () => (
 );
 
 export default SkillsSection;
+
