@@ -39,7 +39,9 @@ const achievements = [
 
 const AchievementsSection = () => (
   <section id="achievements" className="max-w-5xl mx-auto py-20 px-4">
-    <h2 className="text-3xl sm:text-4xl font-bold mb-1 text-black dark:text-white font-playfair">Achievements & Recognition</h2>
+    <h2 className="text-3xl sm:text-4xl font-bold mb-1 bg-gradient-to-r from-purple-700 via-blue-500 to-fuchsia-500 bg-clip-text text-transparent dark:from-indigo-400 dark:via-blue-400 dark:to-pink-300 font-playfair">
+      Achievements & Recognition
+    </h2>
     <div className="text-gray-500 dark:text-gray-300 text-base font-light mb-10">
       Milestones and recognition that mark my professional journey
     </div>
@@ -67,3 +69,4 @@ const AchievementsSection = () => (
 );
 
 export default AchievementsSection;
+

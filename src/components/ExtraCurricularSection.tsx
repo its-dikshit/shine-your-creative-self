@@ -31,7 +31,9 @@ const activities = [
 
 const ExtraCurricularSection = () => (
   <section id="extracurricular" className="max-w-5xl mx-auto py-20 px-4">
-    <h2 className="text-3xl sm:text-4xl font-bold mb-1 text-black dark:text-white font-playfair">Extra-curricular Activities</h2>
+    <h2 className="text-3xl sm:text-4xl font-bold mb-1 bg-gradient-to-r from-pink-700 via-fuchsia-500 to-cyan-500 bg-clip-text text-transparent dark:from-pink-400 dark:via-fuchsia-300 dark:to-cyan-300 font-playfair">
+      Extra-curricular Activities
+    </h2>
     <div className="text-gray-500 dark:text-gray-300 text-base font-light mb-10">
       Beyond coding – my involvement in community and personal interests
     </div>
@@ -50,3 +52,4 @@ const ExtraCurricularSection = () => (
 );
 
 export default ExtraCurricularSection;
+
