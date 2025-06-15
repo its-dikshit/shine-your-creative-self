@@ -10,7 +10,7 @@ const HeroSection = () => {
       className="
         min-h-[60vh]
         flex items-center w-full
-        bg-[#faf7f7] dark:bg-gradient-to-br dark:from-[#171f33] dark:via-[#232943] dark:to-[#382a6d]
+        bg-[#faf7f7] dark:bg-gradient-to-br dark:from-[#171f33] dark:via-[#1b3145] dark:to-[#243b57]
         py-8 sm:py-12
         rounded-none sm:rounded-2xl lg:rounded-3xl
         shadow-lg
@@ -29,11 +29,11 @@ const HeroSection = () => {
       ">
         {/* Left content: This is now the custom intro! */}
         <div className="flex flex-col justify-center sm:px-0 w-full max-w-2xl lg:w-1/2 py-4">
-          <p className="mb-2 text-lg font-semibold text-blue-600 flex items-center gap-2 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-[#232943] dark:via-[#382a6d] dark:to-[#673ab7]">
+          <p className="mb-2 text-lg font-semibold text-blue-600 flex items-center gap-2 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-blue-300 dark:via-cyan-300 dark:to-purple-300">
             <span role="img" aria-label="wave">👋</span> Hello, I'm
           </p>
-          <h1 className="text-4xl font-extrabold mb-2 text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-[#232943] dark:via-[#382a6d] dark:to-[#673ab7] leading-tight">Anshul Kumar</h1>
-          <h2 className="text-xl font-bold text-blue-600 mb-3 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-[#5056b3] dark:via-[#673ab7] dark:to-[#846afa]">Software Developer</h2>
+          <h1 className="text-4xl font-extrabold mb-2 text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-cyan-300 dark:via-indigo-200 dark:to-blue-200 leading-tight">Anshul Kumar</h1>
+          <h2 className="text-xl font-bold text-blue-600 mb-3 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-blue-400 dark:via-cyan-400 dark:to-purple-400">Software Developer</h2>
           <p className="text-base text-muted-foreground mb-4 dark:text-gray-300">
             A 4th-year B.Tech CSE student passionate about becoming a skilled Machine Learning or Software Engineer.
             I am proficient in data science, machine learning, and have hands-on experience with large language models, generative AI, and web technologies.
@@ -72,4 +72,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
