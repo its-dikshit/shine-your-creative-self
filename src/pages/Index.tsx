@@ -1,4 +1,3 @@
-
 import React, { useRef } from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import Sidebar from "@/components/Sidebar";
@@ -41,7 +40,7 @@ const Index = () => {
           style={{}}
         >
           {/* Hero Section */}
-          <section className="mt-4 mb-0" id="herosection">
+          <section className="mt-4 mb-4" id="herosection">
             <HeroSection />
           </section>
           {/* Work Experience */}
