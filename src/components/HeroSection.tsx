@@ -7,7 +7,19 @@ const HeroSection = () => {
   return (
     <section
       id="herosection"
-      className="min-h-[60vh] flex items-center w-full bg-[#faf7f7] dark:bg-background py-8 sm:py-12"
+      className="
+        min-h-[60vh]
+        flex items-center w-full
+        bg-[#faf7f7] dark:bg-background
+        py-8 sm:py-12
+        rounded-none sm:rounded-2xl lg:rounded-3xl
+        shadow-lg
+        transition-all
+        mx-auto
+        mt-4
+        max-w-[1400px]
+      "
+      style={{}}
     >
       <div className="
         flex flex-col-reverse lg:flex-row items-center w-full
@@ -60,4 +72,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
