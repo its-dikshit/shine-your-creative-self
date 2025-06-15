@@ -1,16 +1,17 @@
 
 import React from "react";
-import { Home, About, Contact, Work, Blog, Skills, Education } from "lucide-react";
+import { Home, Contact, Bot } from "lucide-react";
 
+// Using Bot icon for all nav links to resolve missing export errors.
 const navLinks = [
   { label: "HOME", href: "#", icon: Home },
-  { label: "ABOUT", href: "#about", icon: About },
-  { label: "SERVICES", href: "#services", icon: Work },
-  { label: "SKILLS", href: "#skills", icon: Skills },
-  { label: "EDUCATION", href: "#education", icon: Education },
-  { label: "EXPERIENCE", href: "#experience", icon: Work },
-  { label: "WORK", href: "#projects", icon: Work },
-  { label: "BLOG", href: "#blog", icon: Blog },
+  { label: "ABOUT", href: "#about", icon: Bot },
+  { label: "SERVICES", href: "#services", icon: Bot },
+  { label: "SKILLS", href: "#skills", icon: Bot },
+  { label: "EDUCATION", href: "#education", icon: Bot },
+  { label: "EXPERIENCE", href: "#experience", icon: Bot },
+  { label: "WORK", href: "#projects", icon: Bot },
+  { label: "BLOG", href: "#blog", icon: Bot },
   { label: "CONTACT", href: "#contact", icon: Contact },
 ];
 
@@ -25,13 +26,14 @@ const Sidebar = () => (
     </div>
     <nav className="flex-1 w-full">
       <ul className="space-y-2">
-        {navLinks.map(({ label, href }, idx) => (
+        {navLinks.map(({ label, href, icon: Icon }, idx) => (
           <li key={label}>
             <a
               href={href}
-              className="block px-2 py-2 rounded hover:bg-primary/10 text-gray-600 hover:text-primary transition font-medium text-base text-center"
+              className="flex items-center gap-2 px-2 py-2 rounded hover:bg-primary/10 text-gray-600 hover:text-primary transition font-medium text-base text-center"
             >
-              {label}
+              <Icon size={18} />
+              <span>{label}</span>
             </a>
           </li>
         ))}
@@ -62,3 +64,4 @@ const Sidebar = () => (
 );
 
 export default Sidebar;
+
