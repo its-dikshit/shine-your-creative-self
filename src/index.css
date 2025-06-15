@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -92,12 +93,15 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@layer utilities {
+  .hover-animate {
+    @apply transition-transform transition-colors duration-200 ease-in-out hover:scale-105 hover:bg-blue-50 hover:text-blue-700 dark:hover:bg-neutral-800 dark:hover:text-blue-400;
   }
-
-  body {
-    @apply bg-background text-foreground;
+  /* For nav links and buttons (override as needed) */
+  .interactive-link {
+    @apply hover-animate cursor-pointer;
+  }
+  .btn-animate {
+    @apply hover-animate font-semibold;
   }
 }
