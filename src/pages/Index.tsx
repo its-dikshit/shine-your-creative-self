@@ -33,7 +33,7 @@ const Index = () => {
             h-screen
             overflow-y-auto
             flex flex-col
-            px-2 sm:px-6 md:px-10
+            pl-1 pr-2 sm:pr-4 md:pr-6
             pt-0
             min-h-screen
             transition-all
@@ -41,7 +41,7 @@ const Index = () => {
           style={{}}
         >
           {/* Hero Section */}
-          <section className="mt-0 mb-0" id="herosection">
+          <section className="mt-[2px] mb-0" id="herosection">
             <HeroSection />
           </section>
           {/* Work Experience */}
