@@ -27,8 +27,8 @@ const Index = () => {
       <main
         ref={mainScrollRef}
         className="
-          ml-[25vw]
-          w-[75vw]
+          ml-[20vw]
+          w-[80vw]
           max-w-[1100px]
           h-screen
           overflow-y-auto
@@ -38,7 +38,7 @@ const Index = () => {
           min-h-screen
           transition-all
         "
-        style={{ marginLeft: "25vw" }}
+        style={{ marginLeft: "20vw" }}
       >
         {/* Hero Section */}
         <section className="mt-4 mb-0" id="herosection">

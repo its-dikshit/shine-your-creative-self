@@ -10,7 +10,7 @@ const ThemeToggleButton: React.FC<React.HTMLAttributes<HTMLButtonElement>> = ({ 
     <button
       aria-label="Toggle dark mode"
       className={
-        `rounded-full p-2 bg-muted hover:bg-blue-100 dark:hover:bg-indigo-950 
+        `rounded-full p-1.5 bg-muted hover:bg-blue-100 dark:hover:bg-indigo-950 
         border border-sidebar-border shadow-sm transition-all flex items-center justify-center ` + className
       }
       onClick={e => {
@@ -21,8 +21,8 @@ const ThemeToggleButton: React.FC<React.HTMLAttributes<HTMLButtonElement>> = ({ 
       type="button"
     >
       {isDark
-        ? <Sun size={20} className="text-yellow-400" />
-        : <Moon size={20} className="text-indigo-500" />
+        ? <Sun size={18} className="text-yellow-400" />
+        : <Moon size={18} className="text-indigo-500" />
       }
     </button>
   );

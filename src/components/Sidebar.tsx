@@ -75,7 +75,7 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
 
   return (
     <aside
-      className="w-[25vw] min-w-[200px] max-w-[320px] min-h-screen max-h-screen bg-[#f5f7fa] dark:bg-sidebar text-sidebar-foreground border-r border-sidebar-border px-6 flex flex-col items-center fixed left-0 top-0 z-40 transition-colors overflow-y-auto pt-2"
+      className="w-[20vw] min-w-[160px] max-w-[300px] min-h-screen max-h-screen bg-[#f5f7fa] dark:bg-sidebar text-sidebar-foreground border-r border-sidebar-border px-6 flex flex-col items-center fixed left-0 top-0 z-40 transition-colors overflow-y-auto pt-2"
       style={{ fontFamily: "'Playfair Display', serif" }}
     >
       <div className="w-full flex flex-row items-center justify-between pt-1 pb-0">
