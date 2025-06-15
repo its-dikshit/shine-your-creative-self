@@ -1,5 +1,5 @@
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useCallback } from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import Sidebar from "@/components/Sidebar";
 import HeroSection from "@/components/HeroSection";
@@ -22,15 +22,43 @@ const sectionDescriptions = {
 const Index = () => {
   const mainScrollRef = useRef<HTMLDivElement>(null);
 
+  // Track sidebar collapse state for content centering logic
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(true);
+
+  // Callback from Sidebar to update collapse/expand state
+  const handleSidebarWidthChange = useCallback((collapsed: boolean) => {
+    setSidebarCollapsed(collapsed);
+  }, []);
+
+  // Calculate margin for content centering
+  // When sidebar is collapsed: left/right margin = 10vw
+  // When expanded: left margin = 20vw, right margin = 0 (since sidebar is expanded)
+  // But for best centering, add equal margin on both sides
+  let layoutMarginStyle: React.CSSProperties = {};
+  if (sidebarCollapsed) {
+    layoutMarginStyle = {
+      marginLeft: "10vw",
+      marginRight: "10vw",
+      // Prevent shrink too small on mobile
+      maxWidth: "900px",
+    };
+  } else {
+    layoutMarginStyle = {
+      marginLeft: "20vw",
+      marginRight: "0",
+      // Prevent shrink too small on mobile
+      maxWidth: "1100px",
+    };
+  }
+
   return (
     <SidebarProvider>
       <div className="bg-background text-foreground min-h-screen flex w-full">
-        <Sidebar scrollRef={mainScrollRef} />
+        <Sidebar scrollRef={mainScrollRef} onSidebarWidthChange={handleSidebarWidthChange} />
         <main
           ref={mainScrollRef}
           className="
             flex-1
-            max-w-[1100px]
             h-screen
             overflow-y-auto
             flex flex-col
@@ -39,9 +67,8 @@ const Index = () => {
             min-h-screen
             transition-all
           "
-          style={{}}
+          style={layoutMarginStyle}
         >
-          {/* Removed Alt Toggle Button - it's now part of sidebar */}
           {/* Hero Section */}
           <section className="mt-4 mb-0" id="herosection">
             <HeroSection />

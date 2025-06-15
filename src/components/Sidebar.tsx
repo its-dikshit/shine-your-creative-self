@@ -3,7 +3,6 @@ import React from "react";
 import {
   Sidebar as ShadcnSidebar,
   SidebarContent,
-  useSidebar,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import ThemeToggleButton from "./ThemeToggleButton";
@@ -18,63 +17,31 @@ import {
 } from "lucide-react";
 
 const navLinks = [
-  {
-    label: "HOME",
-    href: "#herosection",
-    sectionId: "herosection",
-    icon: Home,
-  },
-  {
-    label: "WORK EXPERIENCE",
-    href: "#experience",
-    sectionId: "experience",
-    icon: Briefcase,
-  },
-  {
-    label: "SKILLS",
-    href: "#skills",
-    sectionId: "skills",
-    icon: Layers,
-  },
-  {
-    label: "PROJECTS",
-    href: "#projects",
-    sectionId: "projects",
-    icon: FolderOpen,
-  },
-  {
-    label: "ACHIEVEMENTS",
-    href: "#achievements",
-    sectionId: "achievements",
-    icon: Trophy,
-  },
-  {
-    label: "EXTRA-CURRICULAR",
-    href: "#extracurricular",
-    sectionId: "extracurricular",
-    icon: Users,
-  },
-  {
-    label: "GET IN TOUCH",
-    href: "#contact",
-    sectionId: "contact",
-    icon: Mail,
-  },
+  { label: "HOME", href: "#herosection", sectionId: "herosection", icon: Home },
+  { label: "WORK EXPERIENCE", href: "#experience", sectionId: "experience", icon: Briefcase },
+  { label: "SKILLS", href: "#skills", sectionId: "skills", icon: Layers },
+  { label: "PROJECTS", href: "#projects", sectionId: "projects", icon: FolderOpen },
+  { label: "ACHIEVEMENTS", href: "#achievements", sectionId: "achievements", icon: Trophy },
+  { label: "EXTRA-CURRICULAR", href: "#extracurricular", sectionId: "extracurricular", icon: Users },
+  { label: "GET IN TOUCH", href: "#contact", sectionId: "contact", icon: Mail },
 ];
 
 type SidebarProps = {
   scrollRef?: React.RefObject<HTMLDivElement>;
+  onSidebarWidthChange?: (collapsed: boolean) => void;
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
-  // Remove Sidebar context toggle usage, hover controls collapse now:
-  // const { state } = useSidebar();
-  // const collapsed = state === "collapsed";
-
-  // new: collapsed state managed locally, toggled by hover
+const Sidebar: React.FC<SidebarProps> = ({ scrollRef, onSidebarWidthChange }) => {
   const [hovered, setHovered] = React.useState(false);
   const [activeSection, setActiveSection] = React.useState("herosection");
   const collapsed = !hovered; // collapsed when not hovered
+
+  // Notify parent (Index.tsx) when sidebar width changes, so content can be centered
+  React.useEffect(() => {
+    if (onSidebarWidthChange) {
+      onSidebarWidthChange(collapsed);
+    }
+  }, [collapsed, onSidebarWidthChange]);
 
   React.useEffect(() => {
     const scrollContainer = scrollRef?.current;
@@ -124,38 +91,39 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
     setActiveSection(id);
   }
 
-  // Visual indication for active section
   const getActiveClass = (sectionId: string) =>
     activeSection === (sectionId || "herosection")
       ? "text-blue-500 bg-blue-100 dark:bg-blue-900 font-bold"
       : "text-gray-700 dark:text-gray-300";
 
-  // On hover, width = 20vw (expanded); on mouse out, width = 10vw (collapsed)
+  // Responsive sidebar width, slower/smoother transition
   const sidebarWidth = collapsed
     ? "w-[10vw] min-w-[56px] max-w-[90px]"
     : "w-[20vw] min-w-[160px] max-w-[300px]";
 
+  // Animation timing
+  const transitionClass = "transition-all duration-700 ease-in-out"; // Slower than before
+
+  // Added top margin/padding for space, font-playfair for style
   return (
     <>
       <ShadcnSidebar className="hidden md:block" collapsible="icon" side="left">
         <div
-          className={`${sidebarWidth} h-screen bg-[#f5f7fa] dark:bg-sidebar text-sidebar-foreground border-r border-sidebar-border transition-all flex-col items-center relative flex`}
-          style={{ transition: "width 0.2s, min-width 0.2s" }}
+          className={`${sidebarWidth} h-screen bg-[#f5f7fa] dark:bg-sidebar text-sidebar-foreground border-r border-sidebar-border flex-col items-center relative flex ${transitionClass}`}
+          style={{ transition: "width 0.7s, min-width 0.7s" }}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
         >
-          {/* Toggle button removed */}
-
           <SidebarContent className="flex flex-col items-center w-full p-0">
             {collapsed ? (
               // Collapsed: Only avatar and vertical icons
-              <div className="flex flex-col items-center w-full">
+              <div className="flex flex-col items-center w-full mt-6"> {/* mt-6 for spacing */}
                 <Avatar className="h-10 w-10 my-3 shadow-md border-2 border-blue-500 bg-white dark:bg-neutral-900 transition-colors mt-0">
                   <AvatarImage src="/lovable-uploads/354854ad-c8f8-4202-be31-5587a92fb34c.png" alt="Profile photo" />
                   <AvatarFallback>JF</AvatarFallback>
                 </Avatar>
                 <nav className="flex-1 w-full flex flex-col items-center">
-                  <ul className="flex flex-col gap-4 mt-6 w-full items-center">
+                  <ul className="flex flex-col gap-4 mt-8 w-full items-center">
                     {navLinks.map(({ label, sectionId, icon: Icon }) => (
                       <li key={label}>
                         <button
@@ -184,15 +152,12 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
               </div>
             ) : (
               // Expanded: full content
-              <div className="flex flex-col items-center w-full">
-                <Avatar className="h-24 w-24 mb-1 shadow-lg border-4 border-blue-500 bg-white dark:bg-neutral-900 transition-colors mt-0">
-                  <AvatarImage src="/lovable-uploads/354854ad-c8f8-4202-be31-5587a92fb34c.png" alt="Profile photo" />
-                  <AvatarFallback>JF</AvatarFallback>
-                </Avatar>
-                <h1 className="text-[1.32rem] font-extrabold mb-1 uppercase tracking-wide text-black dark:text-white text-center leading-none">
+              <div className="flex flex-col items-center w-full mt-10"> {/* mt-10 for more top space */}
+                <Avatar className="h-24 w-24 mb-1 shadow-lg border-4 border-blue-500 bg-white dark:bg-neutral-900 transition-colors mt-0" />
+                <h1 className="text-[1.32rem] font-extrabold mb-1 uppercase tracking-wide text-black dark:text-white text-center leading-none font-playfair">
                   Jackson Ford
                 </h1>
-                <div className="flex flex-row gap-2 items-center text-sm text-center mb-1 justify-center w-full">
+                <div className="flex flex-row gap-2 items-center text-sm text-center mb-1 justify-center w-full font-playfair">
                   <span className="font-bold text-blue-500 tracking-widest">UI/UX Designer</span>
                   <ThemeToggleButton />
                 </div>
@@ -202,7 +167,7 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
                       <li key={label}>
                         <a
                           href={href}
-                          className={`flex items-center gap-3 px-2 py-2 text-base font-medium tracking-wide uppercase transition text-left rounded-lg
+                          className={`flex items-center gap-3 px-2 py-2 text-base font-medium tracking-wide uppercase transition text-left rounded-lg font-playfair
                             ${getActiveClass(sectionId)}
                             interactive-link focus:outline-none focus:ring-2 focus:ring-blue-200 duration-200
                             `}
@@ -229,7 +194,7 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
                   </ul>
                 </nav>
                 <div className="mt-auto w-full flex flex-col gap-2 pb-7" style={{ fontFamily: "sans-serif" }}>
-                  <div className="text-xs text-gray-400 text-center mb-0 dark:text-gray-500">
+                  <div className="text-xs text-gray-400 text-center mb-0 dark:text-gray-500 font-playfair">
                     © 2025 All rights reserved | Made with <span className="text-pink-500">❤</span>
                   </div>
                   <div className="flex justify-center gap-2 mt-2">
@@ -256,12 +221,11 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
           </div>
           <SidebarContent className="flex flex-col items-center w-full p-0 mt-6">
             <div className="w-full flex flex-col items-center pt-2 pb-4">
-              <Avatar className="h-24 w-24 mb-1 shadow-lg border-4 border-blue-500 bg-white dark:bg-neutral-900 transition-colors mt-0">
-                <AvatarImage src="/lovable-uploads/354854ad-c8f8-4202-be31-5587a92fb34c.png" alt="Profile photo" />
-                <AvatarFallback>JF</AvatarFallback>
-              </Avatar>
-              <h1 className="text-[1.32rem] font-extrabold mb-1 uppercase tracking-wide text-black dark:text-white text-center leading-none">Jackson Ford</h1>
-              <div className="flex flex-row gap-2 items-center text-sm text-center mb-1 justify-center w-full">
+              <Avatar className="h-24 w-24 mb-1 shadow-lg border-4 border-blue-500 bg-white dark:bg-neutral-900 transition-colors mt-0" />
+              <h1 className="text-[1.32rem] font-extrabold mb-1 uppercase tracking-wide text-black dark:text-white text-center leading-none font-playfair">
+                Jackson Ford
+              </h1>
+              <div className="flex flex-row gap-2 items-center text-sm text-center mb-1 justify-center w-full font-playfair">
                 <span className="font-bold text-blue-500 tracking-widest">UI/UX Designer</span>
                 <ThemeToggleButton />
               </div>
@@ -272,7 +236,7 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
                   <li key={label}>
                     <a
                       href={href}
-                      className={`flex items-center gap-2 px-2 py-2 text-base font-medium tracking-wide uppercase transition text-center rounded-lg
+                      className={`flex items-center gap-2 px-2 py-2 text-base font-medium tracking-wide uppercase transition text-center rounded-lg font-playfair
                         ${getActiveClass(sectionId)}
                         interactive-link
                         focus:outline-none focus:ring-2 focus:ring-blue-200
@@ -298,7 +262,7 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
               </ul>
             </nav>
             <div className="mt-auto w-full flex flex-col gap-2 pb-7" style={{ fontFamily: "sans-serif" }}>
-              <div className="text-xs text-gray-400 text-center mb-0 dark:text-gray-500">
+              <div className="text-xs text-gray-400 text-center mb-0 dark:text-gray-500 font-playfair">
                 © 2025 All rights reserved | Made with <span className="text-pink-500">❤</span>
               </div>
               <div className="flex justify-center gap-2 mt-2">
@@ -320,3 +284,4 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
 
 export default Sidebar;
 
+// NOTE: This file is now 340+ lines long. You should consider refactoring it into smaller files for readability and maintainability after these changes.
