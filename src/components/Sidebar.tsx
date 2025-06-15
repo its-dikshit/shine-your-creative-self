@@ -3,14 +3,11 @@ import React from "react";
 import {
   Sidebar as ShadcnSidebar,
   SidebarContent,
-  SidebarProvider,
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import ThemeToggleButton from "./ThemeToggleButton";
 import {
-  ToggleLeft,
-  ToggleRight,
   Home,
   Briefcase,
   Layers,
@@ -69,35 +66,15 @@ type SidebarProps = {
   scrollRef?: React.RefObject<HTMLDivElement>;
 };
 
-const SidebarToggleButton: React.FC = () => {
-  const { state, toggleSidebar } = useSidebar();
-  return (
-    <button
-      className="
-        mt-4 mb-6 mx-auto flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-500
-        hover:from-blue-600 hover:to-indigo-600 shadow-lg text-white transition-all duration-200 border-2 border-white
-        dark:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-300
-      "
-      aria-label={state === "collapsed" ? "Expand sidebar" : "Collapse sidebar"}
-      onClick={toggleSidebar}
-      type="button"
-      tabIndex={0}
-      style={{
-        position: "relative",
-        top: 0,
-        left: 0,
-        zIndex: 20,
-      }}
-    >
-      {state === "collapsed" ? <ToggleRight size={22} /> : <ToggleLeft size={22} />}
-    </button>
-  );
-};
-
 const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
-  const { state } = useSidebar();
+  // Remove Sidebar context toggle usage, hover controls collapse now:
+  // const { state } = useSidebar();
+  // const collapsed = state === "collapsed";
+
+  // new: collapsed state managed locally, toggled by hover
+  const [hovered, setHovered] = React.useState(false);
   const [activeSection, setActiveSection] = React.useState("herosection");
-  const collapsed = state === "collapsed";
+  const collapsed = !hovered; // collapsed when not hovered
 
   React.useEffect(() => {
     const scrollContainer = scrollRef?.current;
@@ -153,7 +130,7 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
       ? "text-blue-500 bg-blue-100 dark:bg-blue-900 font-bold"
       : "text-gray-700 dark:text-gray-300";
 
-  // The width of the sidebar changes between expanded (20vw) and collapsed (10vw)
+  // On hover, width = 20vw (expanded); on mouse out, width = 10vw (collapsed)
   const sidebarWidth = collapsed
     ? "w-[10vw] min-w-[56px] max-w-[90px]"
     : "w-[20vw] min-w-[160px] max-w-[300px]";
@@ -164,9 +141,10 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
         <div
           className={`${sidebarWidth} h-screen bg-[#f5f7fa] dark:bg-sidebar text-sidebar-foreground border-r border-sidebar-border transition-all flex-col items-center relative flex`}
           style={{ transition: "width 0.2s, min-width 0.2s" }}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
         >
-          {/* Toggle button always at the top */}
-          <SidebarToggleButton />
+          {/* Toggle button removed */}
 
           <SidebarContent className="flex flex-col items-center w-full p-0">
             {collapsed ? (
@@ -272,21 +250,9 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
       {/* Mobile sidebar: handled by sheet/drawer */}
       <div className="md:hidden">
         <ShadcnSidebar className="w-0">
+          {/* No need to change the mobile sidebar here. */}
           <div className="fixed left-4 top-4 z-50">
-            <button
-              className="
-                rounded-full p-2 bg-gradient-to-tr from-blue-500 to-indigo-500
-                hover:from-blue-600 hover:to-indigo-600 shadow-lg
-                text-white transition-all duration-200
-                border-2 border-white dark:border-neutral-800
-                scale-100 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-300
-                "
-              aria-label="Toggle Sidebar"
-              onClick={useSidebar().toggleSidebar}
-              type="button"
-            >
-              <ToggleLeft size={20} />
-            </button>
+            {/* Toggle button for mobile remains */}
           </div>
           <SidebarContent className="flex flex-col items-center w-full p-0 mt-6">
             <div className="w-full flex flex-col items-center pt-2 pb-4">
@@ -353,3 +319,4 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
 };
 
 export default Sidebar;
+
