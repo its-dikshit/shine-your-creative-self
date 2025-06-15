@@ -30,7 +30,7 @@ const HeroSection = () => {
         {/* Left content: This is now the custom intro! */}
         <div className="flex flex-col justify-center sm:px-0 w-full max-w-2xl lg:w-1/2 py-4">
           <p className="mb-2 text-lg font-semibold text-blue-600 flex items-center gap-2 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-[#5b9cff] dark:to-[#b0bff7]">
-            <span role="img" aria-label="wave">👋</span> Hello, I'm
+            <span role="img" aria-label="wave">👋🏻</span> Hello, I'm
           </p>
           <h1 className="text-4xl font-extrabold mb-2 text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-[#b0bff7] dark:via-[#617aff] dark:to-[#38b2fc] leading-tight">
             Anshul Kumar
@@ -76,3 +76,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
