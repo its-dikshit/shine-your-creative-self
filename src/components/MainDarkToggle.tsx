@@ -4,11 +4,12 @@ import { Sun, Moon } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { useTheme } from "next-themes";
 
+// Ensure the toggle stays truly fixed at the top-right with proper z-index.
 const MainDarkToggle = () => {
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
   return (
-    <div className="fixed top-6 right-6 z-50 bg-background/90 rounded-full px-4 py-2 shadow flex items-center gap-2 border border-sidebar-border">
+    <div className="fixed top-4 right-4 z-[1000] bg-background/90 rounded-full px-4 py-2 shadow flex items-center gap-2 border border-sidebar-border transition-all">
       <Sun size={18} className="text-yellow-400" />
       <Switch
         checked={isDark}

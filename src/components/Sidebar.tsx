@@ -2,18 +2,20 @@
 import React from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
+// Add IDs to match section IDs in main content
 const navLinks = [
-  { label: "HOME", href: "#", sectionId: "" },
+  { label: "HOME", href: "#herosection", sectionId: "herosection" },
   { label: "WORK EXPERIENCE", href: "#experience", sectionId: "experience" },
   { label: "SKILLS", href: "#skills", sectionId: "skills" },
   { label: "PROJECTS", href: "#projects", sectionId: "projects" },
   { label: "ACHIEVEMENTS", href: "#achievements", sectionId: "achievements" },
   { label: "EXTRA-CURRICULAR", href: "#extracurricular", sectionId: "extracurricular" },
-  { label: "CONTACT ME", href: "#contact", sectionId: "contact" },
+  { label: "GET IN TOUCH", href: "#contact", sectionId: "contact" },
 ];
 
+// Used for mapping ids
 const idMap: { [k: string]: string } = {
-  "": "herosection",
+  herosection: "herosection",
   experience: "experience",
   skills: "skills",
   projects: "projects",
@@ -24,21 +26,49 @@ const idMap: { [k: string]: string } = {
 
 const Sidebar = () => {
   const [activeSection, setActiveSection] = React.useState("herosection");
-  // Removed dark mode toggle logic from sidebar
 
+  // Set up scroll tracking for section highlighting
   React.useEffect(() => {
-    const hero = document.querySelector("section") || document.body.children[0];
-    if (hero && !hero.id) {
-      (hero as HTMLElement).id = "herosection";
-    }
+    const handleScroll = () => {
+      const sectionOrder = [
+        "herosection",
+        "experience",
+        "skills",
+        "projects",
+        "achievements",
+        "extracurricular",
+        "contact",
+      ];
+      let foundSection = "herosection";
+      for (let id of sectionOrder) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 96 && rect.bottom >= 96) {
+            foundSection = id;
+            break;
+          }
+        }
+      }
+      setActiveSection(foundSection);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // initial highlight
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   function handleNavClick(id: string) {
-    setActiveSection(id === "" ? "herosection" : id);
+    // Scroll to the section smoothly
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    setActiveSection(id);
   }
 
   const getActiveClass = (sectionId: string) =>
-    activeSection === (sectionId ? sectionId : "herosection")
+    activeSection === (sectionId || "herosection")
       ? "text-blue-500 font-bold"
       : "text-gray-700 dark:text-gray-300";
 
@@ -48,7 +78,6 @@ const Sidebar = () => {
       style={{ fontFamily: "'Playfair Display', serif" }}
     >
       <div className="w-full flex flex-row items-center justify-between pt-4 pb-1">
-        {/* Removed dark mode toggle here */}
         <div />
         <div />
       </div>
@@ -79,11 +108,14 @@ const Sidebar = () => {
                   `}
                 aria-current={activeSection === (sectionId || "herosection") ? "page" : undefined}
                 tabIndex={0}
-                onClick={() => handleNavClick(sectionId)}
+                onClick={e => {
+                  e.preventDefault();
+                  handleNavClick(sectionId);
+                }}
                 style={{
                   letterSpacing: ".12em",
                   fontFamily: "inherit",
-                  fontWeight: sectionId === "" && activeSection === "herosection" ? 700 : 500,
+                  fontWeight: sectionId === "herosection" && activeSection === "herosection" ? 700 : 500,
                 }}
               >
                 {label}
@@ -111,4 +143,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
