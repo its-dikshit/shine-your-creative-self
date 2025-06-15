@@ -1,85 +1,58 @@
-import React, { useState, useEffect, useRef } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem
-} from "@/components/ui/carousel";
 
-const IMAGES = [
-  {
-    url: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=facearea&w=600&q=80",
-    alt: "Profile 1"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=facearea&w=600&q=80",
-    alt: "Profile 2"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=facearea&w=600&q=80",
-    alt: "Profile 3"
-  }
-];
-
-const AUTO_ADVANCE_INTERVAL = 3500; // ms
+import React from "react";
+import { Download } from "lucide-react";
 
 const HeroSection = () => {
-  const [current, setCurrent] = useState(0);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Auto-advance carousel
-  useEffect(() => {
-    timeoutRef.current && clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => {
-      setCurrent((prev) => (prev + 1) % IMAGES.length);
-    }, AUTO_ADVANCE_INTERVAL);
-    return () => timeoutRef.current && clearTimeout(timeoutRef.current);
-  }, [current]);
-
   return (
-    <section className="min-h-screen flex items-center">
-      <div className="flex flex-col md:flex-row items-center justify-between w-full px-8 md:ml-[250px]">
-        <div className="max-w-xl text-center md:text-left flex-1">
-          <h1 className="text-[2.6rem] md:text-[4rem] font-extrabold font-playfair leading-tight mb-3">
-            I am <br className="hidden md:block" />
-            <span className="text-gray-700">a Designer</span>
+    <section
+      id="herosection"
+      className="min-h-screen flex items-center"
+      style={{ background: "#faf7f7" }}
+    >
+      <div className="flex flex-row items-stretch w-full pl-[340px]">
+        {/* Left content */}
+        <div className="flex flex-col justify-center px-16 max-w-2xl w-1/2 py-12">
+          <h1
+            className="text-[3.2rem] lg:text-[4rem] font-extrabold font-playfair leading-tight mb-2 text-black"
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              lineHeight: 1.1,
+            }}
+          >
+            Hi!
+            <br />
+            I&apos;m Jackson
           </h1>
-          <p className="mb-8 text-xl text-gray-500 font-light">
-            100% html5 react templates made by lovable.dev
+          <p className="mb-5 text-lg text-gray-700 tracking-wide font-light">
+            100% html5 bootstrap templates Made by{" "}
+            <a href="https://colorlib.com" className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">
+              colorlib.com
+            </a>
           </p>
           <a
             href="/cv.pdf"
             download
-            className="inline-block border border-gray-400 px-7 py-3 rounded-lg font-medium text-lg hover:bg-primary hover:text-primary-foreground transition-all"
+            className="inline-flex items-center border border-gray-600 px-8 py-3 rounded-[6px] text-lg font-semibold transition-all bg-transparent text-black hover:bg-gray-100"
+            style={{ letterSpacing: "0.02em" }}
           >
-            Download CV
+            DOWNLOAD CV
+            <Download className="ml-2" size={21} />
           </a>
         </div>
-        <div className="mt-10 md:mt-0 flex-1 flex justify-center md:justify-end">
-          <Carousel
-            opts={{ loop: true }}
-            className="w-full max-w-xs md:max-w-md"
-            key={current}
-          >
-            <CarouselContent>
-              {IMAGES.map((image, idx) => (
-                <CarouselItem key={image.url} className="flex items-center justify-center">
-                  <img
-                    src={image.url}
-                    alt={image.alt}
-                    className={`rounded-xl shadow-lg object-cover transition-all duration-700 ${
-                      idx === current ? "opacity-100" : "opacity-0 h-0"
-                    }`}
-                    style={{
-                      background: "#f4f6fa",
-                      width: "100%",
-                      height: "320px",
-                      objectFit: "cover",
-                    }}
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+        {/* Right image */}
+        <div className="w-1/2 flex items-center justify-start pr-10 min-h-[450px]">
+          <img
+            src="/lovable-uploads/749d406c-5538-47c8-ae37-418a06ed9c34.png"
+            alt="Jackson adjusting collar"
+            className="object-cover rounded-none w-full h-auto max-h-[560px] shadow-none"
+            style={{
+              maxWidth: "540px",
+              minWidth: "320px",
+              borderRadius: 0,
+              marginLeft: "auto",
+              background: "#faf7f7"
+            }}
+          />
         </div>
       </div>
     </section>
@@ -87,3 +60,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
