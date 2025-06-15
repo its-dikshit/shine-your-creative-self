@@ -13,10 +13,21 @@ import ExtraCurricularSection from "@/components/ExtraCurricularSection";
 
 const Index = () => {
   return (
-    <div className="bg-background text-foreground min-h-screen w-full flex">
+    <div className="bg-background text-foreground min-h-screen flex w-full">
+      {/* Sidebar: fixes to left on md+, stacks on top on mobile */}
       <Sidebar />
-      <main className="flex-1 md:ml-[240px] h-screen overflow-y-auto">
-        {/* Changed min-h-screen to h-screen and added overflow-y-auto so content is vertically scrollable */}
+      <main
+        className="
+          flex-1 
+          h-screen 
+          overflow-y-auto 
+          md:ml-[240px] 
+          flex flex-col 
+          w-full 
+          px-2 sm:px-4 md:px-8
+          pt-0
+        "
+      >
         <HeroSection />
         <ExperienceSection />
         <SkillsSection />
@@ -30,3 +41,4 @@ const Index = () => {
 };
 
 export default Index;
+
