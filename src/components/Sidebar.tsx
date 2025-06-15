@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import ThemeToggleButton from "./ThemeToggleButton";
-import { PanelLeft, PanelRight, ToggleLeft, ToggleRight } from "lucide-react";
+import { ToggleLeft, ToggleRight } from "lucide-react";
 
 const navLinks = [
   { label: "HOME", href: "#herosection", sectionId: "herosection" },
@@ -25,7 +25,7 @@ type SidebarProps = {
   scrollRef?: React.RefObject<HTMLDivElement>;
 };
 
-// New desktop toggle button component
+// Desktop sidebar toggle button (inside sidebar)
 const DesktopSidebarToggleButton: React.FC = () => {
   const { state, toggleSidebar } = useSidebar();
   return (
@@ -37,6 +37,28 @@ const DesktopSidebarToggleButton: React.FC = () => {
       tabIndex={0}
     >
       {state === "collapsed" ? <ToggleRight size={20} /> : <ToggleLeft size={20} />}
+    </button>
+  );
+};
+
+// Floating "show sidebar" button that appears when sidebar is collapsed
+const SidebarShowButton: React.FC = () => {
+  const { state, toggleSidebar } = useSidebar();
+  // Show ONLY when sidebar is collapsed on desktop
+  if (state !== "collapsed") return null;
+  return (
+    <button
+      className="fixed left-3 top-8 z-40 md:flex hidden items-center justify-center w-9 h-9 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 shadow-lg text-white transition-all border-2 border-white dark:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-300"
+      aria-label="Show sidebar"
+      onClick={toggleSidebar}
+      type="button"
+      tabIndex={0}
+      style={{
+        // Add a little floating effect
+        boxShadow: "0 2px 16px 0 rgba(0, 0, 0, .10)",
+      }}
+    >
+      <ToggleLeft size={22} />
     </button>
   );
 };
@@ -167,6 +189,8 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
           </SidebarContent>
         </div>
       </ShadcnSidebar>
+      {/* Sidebar floating show button (desktop only, shows only when sidebar is collapsed) */}
+      <SidebarShowButton />
       {/* Mobile sidebar: handled by sheet/drawer */}
       <div className="md:hidden">
         <ShadcnSidebar className="w-0">
@@ -182,7 +206,7 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
                 "
               aria-label="Toggle Sidebar"
             >
-              <PanelLeft size={20} />
+              <ToggleLeft size={20} />
             </SidebarTrigger>
           </div>
           <SidebarContent className="flex flex-col items-center w-full p-0 mt-6">
