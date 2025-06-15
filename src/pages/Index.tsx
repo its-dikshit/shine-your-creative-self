@@ -1,3 +1,4 @@
+
 import React from "react";
 import Sidebar from "@/components/Sidebar";
 import HeroSection from "@/components/HeroSection";
@@ -12,14 +13,14 @@ const Index = () => {
       <Sidebar />
       <main className="flex-1 md:ml-[250px] min-h-screen">
         <HeroSection />
-        {/* Optionally render other sections here */}
-        {/* <AboutSection />
+        <AboutSection />
         <ProjectsSection />
         <SkillsSection />
-        <ContactSection /> */}
+        <ContactSection />
       </main>
     </div>
   );
 };
 
 export default Index;
+
