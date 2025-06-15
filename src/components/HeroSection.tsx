@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -32,26 +33,6 @@ const HeroSection = () => {
             <span
               role="img"
               aria-label="wave"
-              className="transition-all dark:drop-shadow-[0_0_6px_rgba(255,235,59,0.8)]"
-              style={{
-                // Filter for yellow(ish) in dark mode, normal in light mode
-                filter:
-                  // Tailwind can't do this inline for emojis, use JS for best yellow
-                  'var(--emoji-filter)',
-                // We'll use a CSS var trick to toggle filter by mode
-                // But we rely on dark's class settings for best compatibility
-              }}
-              // Set a CSS variable on the span only in dark mode using Tailwind's dark: modifier
-              // This must be set in index.css, so instead we'll use a better approach:
-              // Use Tailwind's dark:filter + dark:brightness + dark:saturate for yellow
-              // Browsers differ, but this is a good approximation for emoji yellow:
-              // hue-rotate: +15deg, brightness 1.2-1.4, saturate 1.9-2
-              // See: https://codepen.io/sosuke/pen/Pjoqqp for color filter generator
-              // We'll just use Tailwind for dark with: filter, brightness, saturate, hue-rotate
-              // Example: dark:filter dark:brightness-125 dark:saturate-200 dark:hue-rotate-20
-              // Add those classes below:
-              // Add "select-none" so it doesn't get copied weirdly
-              // The final tailwind classes:
               className="select-none dark:filter dark:brightness-125 dark:saturate-200 dark:hue-rotate-20 transition-all"
             >👋🏻</span>{" "}
             Hello, I'm
@@ -100,3 +81,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
