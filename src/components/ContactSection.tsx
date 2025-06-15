@@ -151,14 +151,7 @@ const ContactSection = () => {
             />
             <Button
               type="submit"
-              className="
-                w-full mt-2 rounded-lg font-semibold uppercase text-base 
-                bg-blue-500 hover:bg-blue-600 transition
-                dark:bg-gradient-to-r dark:from-blue-500 dark:via-cyan-400 dark:to-purple-400
-                dark:hover:from-blue-700 dark:hover:via-purple-500 dark:hover:to-cyan-400
-                dark:text-white
-                shadow
-              "
+              className="w-full mt-2 rounded-lg font-semibold uppercase text-base bg-blue-500 hover:bg-blue-600 transition"
               style={{ minHeight: 44 }}
             >
               Send Message
@@ -187,4 +180,3 @@ const ContactSection = () => {
 };
 
 export default ContactSection;
-
