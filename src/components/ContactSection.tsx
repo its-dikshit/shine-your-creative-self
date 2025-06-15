@@ -1,34 +1,37 @@
+
 import React from "react";
-import { Mail, Phone, Linkedin, Instagram, Github, Youtube } from "lucide-react";
+import { Globe, Map, Phone } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import Footer from "./Footer";
 
-const CONTACT_EMAIL = "your.email@example.com";
-const CONTACT_PHONE = "+1 234 567 8900";
-const CONTACT_LOCATION = "San Francisco, CA";
-
-const SOCIALS = [
+const CONTACTS = [
   {
-    href: "https://github.com/",
-    icon: <Github size={20} />,
-    label: "GitHub",
+    icon: <Globe size={32} className="text-blue-500" />,
+    label: "info@domain.com",
+    value: "info@domain.com",
+    href: "mailto:info@domain.com",
+    className: "font-medium text-blue-500 hover:underline",
   },
   {
-    href: "https://linkedin.com/",
-    icon: <Linkedin size={20} />,
-    label: "LinkedIn",
+    icon: <Map size={32} className="text-blue-500" />,
+    label: (
+      <span>
+        198 West 21th Street, Suite<br />
+        721 New York NY 10016
+      </span>
+    ),
+    value: "198 West 21th Street, Suite 721 New York NY 10016",
+    href: undefined,
+    className: "text-gray-700",
   },
   {
-    href: "https://instagram.com/",
-    icon: <Instagram size={20} />,
-    label: "Instagram",
-  },
-  {
-    href: "https://youtube.com/",
-    icon: <Youtube size={20} />,
-    label: "YouTube",
+    icon: <Phone size={32} className="text-blue-500" />,
+    label: "+123 456 7890",
+    value: "+123 456 7890",
+    href: "tel:+1234567890",
+    className: "font-medium text-blue-500 hover:underline",
   },
 ];
 
@@ -36,53 +39,39 @@ const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="w-full bg-background py-20 px-4 md:px-0 text-foreground transition-colors"
+      className="w-full bg-background py-20 px-2 md:px-0 text-foreground transition-colors"
     >
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start justify-between gap-16">
-        {/* Left: Let's Connect */}
-        <div className="flex-1 w-full md:max-w-xs mb-10 md:mb-0">
-          <h2 className="text-3xl font-bold mb-3">Let's Connect</h2>
-          <ul className="mb-5 space-y-4">
-            <li className="flex items-center gap-3 text-base">
-              <Mail size={20} className="text-blue-500" />
-              <span className="font-medium">{CONTACT_EMAIL}</span>
-            </li>
-            <li className="flex items-center gap-3 text-base">
-              <Phone size={20} className="text-green-500" />
-              <span className="font-medium">{CONTACT_PHONE}</span>
-            </li>
-            <li className="flex items-center gap-3 text-base">
-              {/* Location icon fallback */}
-              <span className="inline-block text-red-500">
-                <svg width="20" height="20" fill="currentColor" className="inline align-middle"><circle cx="10" cy="10" r="8" /></svg>
-              </span>
-              <span className="font-medium">{CONTACT_LOCATION}</span>
-            </li>
-          </ul>
-          <div>
-            <div className="text-base font-semibold mb-2">Follow Me</div>
-            <div className="flex flex-row gap-3">
-              {SOCIALS.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="border border-border bg-card hover:bg-muted text-foreground rounded-md p-2 transition-colors"
-                >
-                  {s.icon}
-                </a>
-              ))}
-            </div>
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-stretch justify-between gap-12 md:gap-3">
+        {/* Left: Contact Information */}
+        <div className="flex-1 max-w-md flex flex-col justify-center gap-5">
+          <h2 className="font-playfair text-3xl font-extrabold uppercase tracking-wide mb-6 text-black">
+            Contact
+          </h2>
+          <div className="flex flex-col gap-5">
+            {CONTACTS.map((c, i) => (
+              <div
+                key={i}
+                className="w-full flex min-h-[82px] bg-gray-100 rounded-md items-center gap-4 px-6 py-5"
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                }}
+              >
+                <div className="flex-shrink-0 bg-white rounded-lg p-2">
+                  {c.icon}
+                </div>
+                <div className="font-base text-[1.07rem]">
+                  {c.href ? (
+                    <a href={c.href} className={c.className}>{c.label}</a>
+                  ) : (
+                    <span className={c.className}>{c.label}</span>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        {/* Right: Form */}
-        <div className="flex-1 w-full max-w-xl mx-auto bg-card rounded-2xl p-8 shadow-xl">
-          <h3 className="text-2xl font-bold mb-2">Send me a message</h3>
-          <p className="text-muted-foreground mb-7 text-base">
-            I'll get back to you as soon as possible
-          </p>
+        {/* Right: Message Form */}
+        <div className="flex-1 w-full max-w-lg mx-auto flex flex-col justify-center">
           <form
             className="space-y-5"
             onSubmit={(e) => {
@@ -90,76 +79,60 @@ const ContactSection = () => {
               // TODO: Hook up form handling
             }}
           >
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="w-full">
-                <label className="block mb-1 font-medium" htmlFor="name">
-                  Name
-                </label>
-                <Input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Your name"
-                  className="bg-background text-foreground border-border placeholder:text-muted-foreground"
-                  required
-                />
-              </div>
-              <div className="w-full">
-                <label className="block mb-1 font-medium" htmlFor="email">
-                  Email
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="your.email@example.com"
-                  className="bg-background text-foreground border-border placeholder:text-muted-foreground"
-                  required
-                />
-              </div>
-            </div>
-            <div>
-              <label className="block mb-1 font-medium" htmlFor="subject">
-                Subject
-              </label>
+            <div className="flex flex-col gap-4">
+              <Input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Name"
+                className="bg-gray-100 text-base rounded-md border-none focus-visible:ring-2 focus-visible:ring-blue-400 placeholder:text-gray-400"
+                required
+                style={{ minHeight: 50, fontFamily: "'Playfair Display', serif" }}
+              />
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Email"
+                className="bg-gray-100 text-base rounded-md border-none focus-visible:ring-2 focus-visible:ring-blue-400 placeholder:text-gray-400"
+                required
+                style={{ minHeight: 50, fontFamily: "'Playfair Display', serif" }}
+              />
               <Input
                 id="subject"
                 name="subject"
                 type="text"
-                placeholder="What's this about?"
-                className="bg-background text-foreground border-border placeholder:text-muted-foreground"
+                placeholder="Subject"
+                className="bg-gray-100 text-base rounded-md border-none focus-visible:ring-2 focus-visible:ring-blue-400 placeholder:text-gray-400"
                 required
+                style={{ minHeight: 50, fontFamily: "'Playfair Display', serif" }}
               />
-            </div>
-            <div>
-              <label className="block mb-1 font-medium" htmlFor="message">
-                Message
-              </label>
               <Textarea
                 id="message"
                 name="message"
                 rows={4}
-                placeholder="Your message..."
-                className="bg-background text-foreground border-border placeholder:text-muted-foreground"
+                placeholder="Message"
+                className="bg-gray-100 text-base rounded-md border-none focus-visible:ring-2 focus-visible:ring-blue-400 placeholder:text-gray-400"
                 required
+                style={{ fontFamily: "'Playfair Display', serif" }}
               />
             </div>
-            <div>
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full mt-1 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-lg font-semibold hover:from-blue-600 hover:to-purple-700 text-white"
-              >
-                Send Message
-              </Button>
-            </div>
+            <Button
+              type="submit"
+              size="lg"
+              className="w-full mt-2 rounded bg-blue-500 hover:bg-blue-600 font-semibold uppercase tracking-wider text-base"
+              style={{ fontFamily: "'Playfair Display', serif", minHeight: 48 }}
+            >
+              Send Message
+            </Button>
           </form>
         </div>
       </div>
-      {/* Footer */}
+      {/* Remove social icons and integrate site-wide Footer as before */}
       <Footer />
     </section>
   );
 };
 
 export default ContactSection;
+
