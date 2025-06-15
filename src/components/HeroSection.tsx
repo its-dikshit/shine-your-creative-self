@@ -30,12 +30,18 @@ const HeroSection = () => {
         {/* Left content: This is now the custom intro! */}
         <div className="flex flex-col justify-center sm:px-0 w-full max-w-2xl lg:w-1/2 py-4">
           <p className="mb-2 text-lg font-semibold text-blue-600 flex items-center gap-2 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-[#5b9cff] dark:to-[#b0bff7]">
-            <span
-              role="img"
-              aria-label="wave"
-              className="select-none dark:filter dark:brightness-125 dark:saturate-200 dark:hue-rotate-20 transition-all"
-            >👋🏻</span>{" "}
-            Hello, I'm
+            <img
+              src="/lovable-uploads/yellow-hand.png"
+              alt="Waving hand"
+              className="select-none transition-all"
+              width={28}
+              height={28}
+              style={{
+                display: "inline-block",
+                verticalAlign: "middle"
+              }}
+            />
+            {" "}Hello, I'm
           </p>
           <h1 className="text-4xl font-extrabold mb-2 text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-[#b0bff7] dark:via-[#617aff] dark:to-[#38b2fc] leading-tight">
             Anshul Kumar
