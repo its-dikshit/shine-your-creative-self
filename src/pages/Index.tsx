@@ -23,7 +23,7 @@ const Index = () => {
 
   return (
     <SidebarProvider>
-      <div className="bg-background text-foreground min-h-screen flex w-full">
+      <div className="bg-background text-foreground min-h-screen flex w-full gap-x-1">
         <Sidebar scrollRef={mainScrollRef} />
         <main
           ref={mainScrollRef}
