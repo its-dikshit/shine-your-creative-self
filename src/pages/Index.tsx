@@ -15,7 +15,8 @@ const Index = () => {
   return (
     <div className="bg-background text-foreground min-h-screen w-full flex">
       <Sidebar />
-      <main className="flex-1 md:ml-[240px] min-h-screen">
+      <main className="flex-1 md:ml-[240px] h-screen overflow-y-auto">
+        {/* Changed min-h-screen to h-screen and added overflow-y-auto so content is vertically scrollable */}
         <HeroSection />
         <ExperienceSection />
         <SkillsSection />
@@ -29,4 +30,3 @@ const Index = () => {
 };
 
 export default Index;
-
