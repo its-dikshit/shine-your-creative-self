@@ -4,7 +4,7 @@ import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 const FOOTER_LINKS = [
-  { label: "Home", href: "#" },
+  { label: "Home", href: "#herosection" },
   { label: "Work Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },

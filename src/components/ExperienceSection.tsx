@@ -21,7 +21,7 @@ const ExperienceSection = () => (
   <section id="experience" className="max-w-4xl mx-auto my-20 px-6 py-10 bg-secondary rounded-2xl shadow-md animate-fade-in">
     <div className="flex items-center gap-3 mb-5">
       <Briefcase className="text-primary" size={28} />
-      <h2 className="text-3xl font-bold">Experience</h2>
+      <h2 className="text-3xl font-bold">Work Experience</h2>
     </div>
     <ul className="space-y-4">
       {experience.map((exp, idx) => (
