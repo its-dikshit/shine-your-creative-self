@@ -4,12 +4,16 @@ import { Sun, Moon } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { useTheme } from "next-themes";
 
-// Ensure the toggle stays truly fixed at the top-right with proper z-index.
-const MainDarkToggle = () => {
+// Adapt: not fixed anymore, allow passing extra classes and props
+type MainDarkToggleProps = React.HTMLAttributes<HTMLDivElement>;
+const MainDarkToggle: React.FC<MainDarkToggleProps> = ({ className = "", ...props }) => {
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
   return (
-    <div className="fixed top-4 right-4 z-[1000] bg-background/90 rounded-full px-4 py-2 shadow flex items-center gap-2 border border-sidebar-border transition-all">
+    <div
+      className={`bg-background/90 rounded-full px-4 py-2 shadow flex items-center gap-2 border border-sidebar-border transition-all ${className}`}
+      {...props}
+    >
       <Sun size={18} className="text-yellow-400" />
       <Switch
         checked={isDark}

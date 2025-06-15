@@ -1,6 +1,6 @@
-
 import React from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import MainDarkToggle from "./MainDarkToggle"; // Import the toggle
 
 // Add IDs to match section IDs in main content
 const navLinks = [
@@ -108,8 +108,12 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
           <AvatarFallback>JF</AvatarFallback>
         </Avatar>
         <h1 className="text-[1.55rem] font-extrabold mb-1 uppercase tracking-wide text-black dark:text-white text-center leading-none">Jackson Ford</h1>
-        <div className="flex flex-row items-center text-sm gap-1 text-center">
+        <div className="flex flex-row items-center text-sm gap-1 text-center mb-2">
           <div className="font-bold text-blue-500 tracking-widest">UI/UX Designer</div>
+        </div>
+        {/* Dark mode toggle placed here, right-aligned in sidebar */}
+        <div className="w-full flex flex-row justify-end mt-1">
+          <MainDarkToggle />
         </div>
       </div>
       <nav className="flex-1 w-full flex flex-col mt-2">
@@ -164,4 +168,3 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
 };
 
 export default Sidebar;
-

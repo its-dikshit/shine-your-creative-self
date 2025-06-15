@@ -1,4 +1,3 @@
-
 import React, { useRef } from "react";
 import Sidebar from "@/components/Sidebar";
 import HeroSection from "@/components/HeroSection";
@@ -38,8 +37,6 @@ const Index = () => {
           pt-0
         "
       >
-        {/* Fixed dark mode toggle */}
-        <MainDarkToggle />
         {/* Hero Section */}
         <section className="mt-2 mb-0" id="herosection">
           <HeroSection />
