@@ -1,4 +1,3 @@
-
 import React, { useRef } from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import Sidebar from "@/components/Sidebar";
@@ -24,7 +23,7 @@ const Index = () => {
 
   return (
     <SidebarProvider>
-      <div className="bg-background text-foreground min-h-screen flex w-full">
+      <div className="bg-background text-foreground min-h-screen flex w-full gap-x-6">
         <Sidebar scrollRef={mainScrollRef} />
         <main
           ref={mainScrollRef}
