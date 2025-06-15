@@ -10,7 +10,7 @@ const HeroSection = () => {
       className="
         min-h-[60vh]
         flex items-center w-full
-        bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 dark:from-blue-900 dark:via-indigo-900 dark:to-violet-800
+        bg-[#faf7f7] dark:bg-background
         py-8 sm:py-12
         rounded-none sm:rounded-2xl lg:rounded-3xl
         shadow-lg
@@ -72,4 +72,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-

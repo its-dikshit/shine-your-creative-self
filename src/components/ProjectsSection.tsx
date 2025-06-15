@@ -30,9 +30,7 @@ const projects = [
 
 const ProjectsSection = () => (
   <section id="projects" className="max-w-6xl mx-auto my-20 px-6">
-    <h2 className="text-3xl font-bold mb-10 text-black dark:text-white bg-gradient-to-r from-sky-700 via-blue-500 to-fuchsia-500 bg-clip-text text-transparent dark:from-blue-300 dark:via-indigo-400 dark:to-fuchsia-400">
-      Projects
-    </h2>
+    <h2 className="text-3xl font-bold mb-10 text-black dark:text-white">Projects</h2>
     <div className="grid md:grid-cols-3 gap-8">
       {projects.map((project, idx) => (
         <a
@@ -66,4 +64,3 @@ const ProjectsSection = () => (
 );
 
 export default ProjectsSection;
-

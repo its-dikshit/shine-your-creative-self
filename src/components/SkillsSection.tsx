@@ -17,9 +17,8 @@ const topText = "The Big Oxmox advised her not to do so, because there were thou
 const SkillsSection = () => (
   <section id="skills" className="max-w-4xl mx-auto py-20 px-4 bg-card dark:bg-card border border-gray-100 dark:border-slate-800 rounded-2xl shadow-lg transition-all">
     <div className="mb-2 text-xs uppercase tracking-[0.35em] text-gray-400 font-semibold" style={{letterSpacing: "0.32em"}}>My Specialty</div>
-    {/* Gradient-heading below */}
     <h2
-      className="text-3xl sm:text-4xl font-bold font-playfair mb-6 tracking-widest bg-gradient-to-r from-blue-600 via-indigo-500 to-pink-500 bg-clip-text text-transparent dark:from-blue-300 dark:via-indigo-400 dark:to-fuchsia-400"
+      className="text-3xl sm:text-4xl font-bold font-playfair mb-6 tracking-widest text-black dark:text-white"
       style={{ letterSpacing: ".08em", fontFamily: "'Playfair Display',serif" }}
     >
       MY SKILLS
@@ -81,4 +80,3 @@ const SkillsSection = () => (
 );
 
 export default SkillsSection;
-

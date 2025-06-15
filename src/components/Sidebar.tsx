@@ -78,7 +78,7 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
       : "text-gray-700 dark:text-gray-200";
 
   return (
-    <ShadcnSidebar className="w-[20vw] min-w-[160px] max-w-[300px] bg-gradient-to-b from-blue-200 via-indigo-100 to-white dark:from-blue-900 dark:via-indigo-900 dark:to-slate-900 border-r border-sidebar-border transition-colors flex flex-col items-center h-screen">
+    <ShadcnSidebar className="w-[20vw] min-w-[160px] max-w-[300px] bg-[#f5f7fa] dark:bg-[#111827] border-r border-sidebar-border transition-colors flex flex-col items-center h-screen">
       <SidebarContent className="flex flex-col items-center w-full p-0">
         <div className="w-full flex flex-col items-center pt-6 pb-4">
           <Avatar className="h-24 w-24 mb-1 shadow-lg border-4 border-blue-500 bg-white dark:bg-slate-800 transition-colors mt-0">
@@ -141,4 +141,3 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
 };
 
 export default Sidebar;
-
