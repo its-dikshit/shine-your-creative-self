@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useRef } from "react";
 import Sidebar from "@/components/Sidebar";
 import HeroSection from "@/components/HeroSection";
 import SkillsSection from "@/components/SkillsSection";
@@ -20,10 +20,13 @@ const sectionDescriptions = {
 };
 
 const Index = () => {
+  const mainScrollRef = useRef<HTMLDivElement>(null);
+
   return (
     <div className="bg-background text-foreground min-h-screen flex w-full">
-      <Sidebar />
+      <Sidebar scrollRef={mainScrollRef} />
       <main
+        ref={mainScrollRef}
         className="
           flex-1
           h-screen

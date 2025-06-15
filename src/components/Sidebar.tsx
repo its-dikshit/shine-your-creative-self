@@ -24,11 +24,18 @@ const idMap: { [k: string]: string } = {
   contact: "contact",
 };
 
-const Sidebar = () => {
+type SidebarProps = {
+  scrollRef?: React.RefObject<HTMLDivElement>;
+};
+
+const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
   const [activeSection, setActiveSection] = React.useState("herosection");
 
-  // Set up scroll tracking for section highlighting
+  // Set up scroll tracking for section highlighting (use scrollRef container)
   React.useEffect(() => {
+    const scrollContainer = scrollRef?.current;
+    if (!scrollContainer) return;
+
     const handleScroll = () => {
       const sectionOrder = [
         "herosection",
@@ -40,11 +47,18 @@ const Sidebar = () => {
         "contact",
       ];
       let foundSection = "herosection";
+      // Get scrollContainer top for relative offset
+      const containerRect = scrollContainer.getBoundingClientRect();
+
       for (let id of sectionOrder) {
         const el = document.getElementById(id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 96 && rect.bottom >= 96) {
+          // Adjust comparison for custom scroll container
+          // consider the offset relative to the container's top, e.g., header size 32~64px
+          const offsetTop = rect.top - containerRect.top;
+          const offsetBottom = rect.bottom - containerRect.top;
+          if (offsetTop <= 80 && offsetBottom >= 80) {
             foundSection = id;
             break;
           }
@@ -53,16 +67,23 @@ const Sidebar = () => {
       setActiveSection(foundSection);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    scrollContainer.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // initial highlight
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    return () => {
+      scrollContainer.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollRef]);
 
   function handleNavClick(id: string) {
-    // Scroll to the section smoothly
+    // Scroll to the section smoothly in the scrollable main container
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (el && scrollRef?.current) {
+      const container = scrollRef.current;
+      // Calculate how much to scroll to bring the element's top to the container
+      const containerRect = container.getBoundingClientRect();
+      const elRect = el.getBoundingClientRect();
+      const scrollOffset = elRect.top - containerRect.top + container.scrollTop;
+      container.scrollTo({ top: scrollOffset - 16, behavior: "smooth" }); // adjust (+/-) for header padding
     }
     setActiveSection(id);
   }
@@ -143,3 +164,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
