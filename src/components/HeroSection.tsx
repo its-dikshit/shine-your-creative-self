@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
@@ -29,15 +30,19 @@ const HeroSection = () => {
               colorlib.com
             </a>
           </p>
-          <a
-            href="/cv.pdf"
-            download
-            className="inline-flex items-center border border-gray-600 px-8 py-3 rounded-[6px] text-lg font-semibold transition-all bg-transparent text-black hover:bg-gray-100"
-            style={{ letterSpacing: "0.02em" }}
-          >
-            DOWNLOAD CV
-            <Download className="ml-2" size={21} />
-          </a>
+          <div className="flex flex-row gap-4 mb-2">
+            <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="lg" className="font-semibold px-8 py-3 text-lg">
+                View Resume
+                <Download className="ml-2" size={21} />
+              </Button>
+            </a>
+            <a href="#contact">
+              <Button variant="default" size="lg" className="font-semibold px-8 py-3 text-lg">
+                Contact Me
+              </Button>
+            </a>
+          </div>
         </div>
         {/* Right image */}
         <div className="w-1/2 flex items-center justify-start pr-10 min-h-[450px]">
@@ -60,4 +65,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
