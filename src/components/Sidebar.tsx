@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import MainDarkToggle from "./MainDarkToggle"; // Import the toggle
@@ -107,14 +108,17 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
           <AvatarImage src="/lovable-uploads/354854ad-c8f8-4202-be31-5587a92fb34c.png" alt="Profile photo" />
           <AvatarFallback>JF</AvatarFallback>
         </Avatar>
+        {/* Name */}
         <h1 className="text-[1.55rem] font-extrabold mb-1 uppercase tracking-wide text-black dark:text-white text-center leading-none">Jackson Ford</h1>
-        <div className="flex flex-row items-center text-sm gap-1 text-center mb-2">
+        {/* Title & dark mode toggle side by side */}
+        <div className="flex flex-row items-center text-sm gap-2 text-center mb-2 justify-center w-full">
           <div className="font-bold text-blue-500 tracking-widest">UI/UX Designer</div>
-        </div>
-        {/* Dark mode toggle placed here, right-aligned in sidebar */}
-        <div className="w-full flex flex-row justify-end mt-1">
           <MainDarkToggle />
         </div>
+        {/* Dark mode toggle removed from below the title */}
+        {/* <div className="w-full flex flex-row justify-end mt-1">
+          <MainDarkToggle />
+        </div> */}
       </div>
       <nav className="flex-1 w-full flex flex-col mt-2">
         <ul className="space-y-1 mb-2 px-0">
@@ -168,3 +172,4 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
 };
 
 export default Sidebar;
+
