@@ -6,6 +6,10 @@ import AboutSection from "@/components/AboutSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import ContactSection from "@/components/ContactSection";
+import ServicesSection from "@/components/ServicesSection";
+import EducationSection from "@/components/EducationSection";
+import ExperienceSection from "@/components/ExperienceSection";
+import BlogSection from "@/components/BlogSection";
 
 const Index = () => {
   return (
@@ -14,8 +18,12 @@ const Index = () => {
       <main className="flex-1 md:ml-[250px] min-h-screen">
         <HeroSection />
         <AboutSection />
-        <ProjectsSection />
+        <ServicesSection />
         <SkillsSection />
+        <EducationSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <BlogSection />
         <ContactSection />
       </main>
     </div>
@@ -23,4 +31,3 @@ const Index = () => {
 };
 
 export default Index;
-
