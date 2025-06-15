@@ -9,7 +9,6 @@ import ContactSection from "@/components/ContactSection";
 import AchievementsSection from "@/components/AchievementsSection";
 import ExtraCurricularSection from "@/components/ExtraCurricularSection";
 import MainDarkToggle from "@/components/MainDarkToggle";
-import IntroSection from "@/components/IntroSection";
 
 const Index = () => {
   return (
@@ -27,10 +26,9 @@ const Index = () => {
           pt-0
         "
       >
+        {/* Dark toggle still static/fixed at top-right */}
         <MainDarkToggle />
-        <IntroSection />
-
-        {/* Updated: Add headings and hover animation classes where appropriate */}
+        {/* Removed <IntroSection /> to avoid duplicate intro */}
         <section className="mt-2 mb-0">
           <HeroSection />
         </section>

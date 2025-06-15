@@ -1,8 +1,6 @@
+
 import React from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Switch } from "@/components/ui/switch";
-import { Sun, Moon } from "lucide-react";
-import { useTheme } from "next-themes";
 
 const navLinks = [
   { label: "HOME", href: "#", sectionId: "" },
@@ -26,8 +24,7 @@ const idMap: { [k: string]: string } = {
 
 const Sidebar = () => {
   const [activeSection, setActiveSection] = React.useState("herosection");
-  const { theme, setTheme } = useTheme();
-  const isDark = theme === "dark";
+  // Removed dark mode toggle logic from sidebar
 
   React.useEffect(() => {
     const hero = document.querySelector("section") || document.body.children[0];
@@ -51,17 +48,9 @@ const Sidebar = () => {
       style={{ fontFamily: "'Playfair Display', serif" }}
     >
       <div className="w-full flex flex-row items-center justify-between pt-4 pb-1">
+        {/* Removed dark mode toggle here */}
         <div />
-        <div className="flex items-center gap-2">
-          <Sun size={18} className="text-yellow-400" />
-          <Switch
-            checked={isDark}
-            onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
-            aria-label="Toggle dark mode"
-            className="data-[state=checked]:bg-blue-600 data-[state=unchecked]:bg-gray-200 focus:ring-2 focus:ring-blue-300 transition"
-          />
-          <Moon size={18} className="text-blue-700" />
-        </div>
+        <div />
       </div>
       <div className="w-full flex flex-col items-center pt-4 pb-5">
         <Avatar className="h-28 w-28 mb-2 shadow-lg border-4 border-blue-500 bg-white dark:bg-neutral-900 transition-colors">
@@ -122,3 +111,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
