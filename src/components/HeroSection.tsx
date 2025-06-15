@@ -13,15 +13,16 @@ const HeroSection = () => (
           100% html5 react templates made by lovable.dev
         </p>
         <a
-          href="#projects"
+          href="/cv.pdf"
+          download
           className="inline-block border border-gray-400 px-7 py-3 rounded-lg font-medium text-lg hover:bg-primary hover:text-primary-foreground transition-all"
         >
-          VIEW PORTFOLIO
+          Download CV
         </a>
       </div>
       <div className="mt-10 md:mt-0 flex-1 flex justify-center md:justify-end">
         <img
-          src="/lovable-uploads/354854ad-c8f8-4202-be31-5587a92fb34c.png"
+          src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=facearea&w=600&q=80"
           alt="Profile"
           className="max-w-xs md:max-w-md rounded-xl shadow-lg object-cover"
           style={{ background: "#f4f6fa" }}
