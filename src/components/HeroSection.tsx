@@ -8,33 +8,31 @@ const HeroSection = () => {
     <section
       id="herosection"
       className="flex items-center justify-center w-full py-8 sm:py-12"
-      // Outer section stays transparent, inner div is the "card"
     >
       <div
-        className="
+        className={`
           w-full
-          max-w-[1440px]
+          max-w-none
           mx-auto
-          px-2 md:px-8
-          "
+          px-0 md:px-0
+        `}
       >
         <div
           className="
             flex flex-col-reverse lg:flex-row items-center w-full
-            rounded-xl shadow-lg
+            rounded-3xl shadow-lg
             bg-[#fcf6f5] dark:bg-background
-            lg:px-16 px-4 md:px-8
+            px-3 sm:px-10 md:px-16
             gap-6 lg:gap-0
             min-h-[60vh]
             "
           style={{
-            borderRadius: "1.25rem",
-            // Matches the feel of the screenshot's card, only on light mode
+            borderRadius: "2rem",
             background: "var(--hero-card-bg, #fcf6f5)"
           }}
         >
           {/* Left content: This is now the custom intro! */}
-          <div className="flex flex-col justify-center sm:px-0 w-full max-w-2xl lg:w-1/2 py-4">
+          <div className="flex flex-col justify-center w-full max-w-2xl lg:w-3/5 py-4 pl-2 sm:pl-12 md:pl-20">
             <p className="mb-2 text-lg font-semibold text-blue-600 flex items-center gap-2">
               <span role="img" aria-label="wave">👋</span> Hello, I'm
             </p>
@@ -69,11 +67,11 @@ const HeroSection = () => {
             </div>
           </div>
           {/* Right image stays as is */}
-          <div className="flex items-center justify-center w-full lg:w-1/2 min-h-[260px] sm:min-h-[380px] lg:min-h-[450px] px-0">
+          <div className="flex items-center justify-center w-full lg:w-2/5 min-h-[260px] sm:min-h-[380px] lg:min-h-[450px] px-2 sm:px-6 md:px-12 py-4">
             <img
               src="/lovable-uploads/749d406c-5538-47c8-ae37-418a06ed9c34.png"
               alt="Jackson adjusting collar"
-              className="object-cover w-full h-auto max-h-[320px] sm:max-h-[380px] lg:max-h-[560px] max-w-sm md:max-w-md lg:max-w-[540px] rounded-md shadow"
+              className="object-cover w-full h-auto max-h-[320px] sm:max-h-[380px] lg:max-h-[460px] max-w-md lg:max-w-lg rounded-md shadow-md"
               style={{
                 background: "#fcf6f5"
               }}
