@@ -1,10 +1,12 @@
 
 import React from "react";
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram, Moon, Sun } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import Footer from "./Footer";
+import { Switch } from "@/components/ui/switch";
+import { useTheme } from "next-themes";
 
 const CONTACT_INFO = [
   {
@@ -51,11 +53,29 @@ const SOCIALS = [
 ];
 
 const ContactSection = () => {
+  // For dark mode toggle
+  const { theme, setTheme } = useTheme();
+  const isDark = theme === "dark";
+
   return (
-    <section id="contact" className="w-full bg-white py-16 px-2 md:px-0 text-black">
+    <section id="contact" className="w-full bg-white dark:bg-background py-16 px-2 md:px-0 text-black dark:text-white relative">
+      <div className="max-w-5xl mx-auto mb-8 px-2 flex items-center justify-between">
+        <h1 className="text-4xl font-extrabold font-playfair tracking-tight">Contact Me</h1>
+        {/* Dark Mode Toggle */}
+        <div className="flex items-center gap-2">
+          <Sun size={18} className="text-yellow-400" />
+          <Switch
+            checked={isDark}
+            onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
+            aria-label="Toggle dark mode"
+            className="data-[state=checked]:bg-blue-600 data-[state=unchecked]:bg-gray-200 focus:ring-2 focus:ring-blue-300 transition"
+          />
+          <Moon size={18} className="text-blue-700" />
+        </div>
+      </div>
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-        {/* Left: Contact info */}
-        <div className="flex flex-col justify-center gap-8">
+        {/* Left: Contact info (scrollable if overflow) */}
+        <div className="flex flex-col justify-center gap-8 max-h-[480px] md:max-h-[520px] overflow-y-auto pr-2 custom-scrollbar">
           <div>
             <h2 className="text-3xl font-extrabold mb-4">Let&apos;s Connect</h2>
             <div className="flex flex-col gap-5">
@@ -79,9 +99,9 @@ const ContactSection = () => {
             </div>
           </div>
           {/* ---- Follow Me section ---- */}
-          <div>
+          <div className="mt-2">
             <div className="text-lg font-semibold mt-8 mb-2">Follow Me</div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 flex-wrap">
               {SOCIALS.map((s) => (
                 <a
                   key={s.label}
@@ -89,16 +109,16 @@ const ContactSection = () => {
                   aria-label={s.label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border border-gray-300 rounded-lg w-11 h-11 flex items-center justify-center hover:border-blue-400 hover:text-blue-500 transition-colors group bg-white"
+                  className="border border-gray-300 rounded-lg w-11 h-11 flex items-center justify-center bg-white dark:bg-neutral-900 dark:border-gray-700 hover:shadow-lg transform hover:scale-110 active:scale-95 transition-all duration-200 group"
                 >
-                  <span className="group-hover:text-blue-500 text-gray-700">{s.icon}</span>
+                  <span className="group-hover:text-blue-500 text-gray-700 dark:text-gray-300 transition">{s.icon}</span>
                 </a>
               ))}
             </div>
           </div>
         </div>
         {/* Right: Contact form */}
-        <div className="bg-gray-100 rounded-xl p-8 shadow-md flex flex-col justify-center">
+        <div className="bg-gray-100 dark:bg-neutral-900 rounded-xl p-8 shadow-md flex flex-col justify-center">
           <form
             className="flex flex-col gap-5"
             onSubmit={e => {
@@ -113,7 +133,7 @@ const ContactSection = () => {
                 type="text"
                 placeholder="Your name"
                 required
-                className="bg-white border border-gray-300 rounded-lg text-base"
+                className="bg-white dark:bg-neutral-800 border border-gray-300 dark:border-gray-700 rounded-lg text-base"
                 style={{ minHeight: 44 }}
               />
               <Input
@@ -122,7 +142,7 @@ const ContactSection = () => {
                 type="email"
                 placeholder="your.email@example.com"
                 required
-                className="bg-white border border-gray-300 rounded-lg text-base"
+                className="bg-white dark:bg-neutral-800 border border-gray-300 dark:border-gray-700 rounded-lg text-base"
                 style={{ minHeight: 44 }}
               />
             </div>
@@ -132,7 +152,7 @@ const ContactSection = () => {
               type="text"
               placeholder="What's this about?"
               required
-              className="bg-white border border-gray-300 rounded-lg text-base"
+              className="bg-white dark:bg-neutral-800 border border-gray-300 dark:border-gray-700 rounded-lg text-base"
               style={{ minHeight: 44 }}
             />
             <Textarea
@@ -141,7 +161,7 @@ const ContactSection = () => {
               rows={4}
               placeholder="Your message..."
               required
-              className="bg-white border border-gray-300 rounded-lg text-base"
+              className="bg-white dark:bg-neutral-800 border border-gray-300 dark:border-gray-700 rounded-lg text-base"
               style={{ minHeight: 80 }}
             />
             <Button
@@ -155,8 +175,24 @@ const ContactSection = () => {
         </div>
       </div>
       <Footer />
+      {/* Custom scrollbar for left panel */}
+      <style>
+        {`
+          .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+          }
+          .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+          }
+          .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #52525b;
+          }
+        `}
+      </style>
     </section>
   );
 };
 
 export default ContactSection;
+
