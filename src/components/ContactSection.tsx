@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import Footer from "./Footer";
-
+import axios from "axios"
 const CONTACT_INFO = [
   {
     icon: <Mail size={22} className="text-blue-400" />,
@@ -66,21 +66,27 @@ const ContactSection = () => {
       message: formData.get('message'),
     };
 
+    console.log("Hello")
     console.log('Form data being sent:', data);
-
+ const endpoint='https://formspree.io/f/xjkrrpqp';
+      console.log("Endpoint", endpoint)
     try {
       // Updated Formspree endpoint with correct format
-      const response = await fetch('https://formspree.io/f/xpwzbqpb', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
+     
+     const response = await axios.post(
+  endpoint,
+  JSON.stringify(data),
+  {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    }
+  }
+);
+      console.log('Response: ', response)
       console.log('Response status:', response.status);
 
-      if (response.ok) {
+      if (response.status===200) {
         toast({
           title: "Message sent successfully!",
           description: "Thank you for your message. I'll get back to you soon.",
