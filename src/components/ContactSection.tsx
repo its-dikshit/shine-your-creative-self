@@ -1,11 +1,9 @@
-
 import React, { useState } from "react";
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from '@emailjs/browser';
 import Footer from "./Footer";
 
 const CONTACT_INFO = [
@@ -60,8 +58,7 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
+    const formData = new FormData(e.currentTarget);
     const data = {
       name: formData.get('name'),
       email: formData.get('email'),
@@ -72,58 +69,34 @@ const ContactSection = () => {
     console.log('Form data being sent:', data);
 
     try {
-      // Initialize EmailJS (you'll need to set up your EmailJS account and get these IDs)
-      // For now, using placeholder IDs - user will need to replace with actual EmailJS credentials
-      const result = await emailjs.sendForm(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-        form,
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
-      );
+      // Updated Formspree endpoint with correct format
+      const response = await fetch('https://formspree.io/f/xpwzbqpb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-      console.log('EmailJS result:', result);
+      console.log('Response status:', response.status);
 
-      if (result.status === 200) {
+      if (response.ok) {
         toast({
           title: "Message sent successfully!",
           description: "Thank you for your message. I'll get back to you soon.",
         });
         // Reset form
-        form.reset();
+        e.currentTarget.reset();
       } else {
         throw new Error('Failed to send message');
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      
-      // Fallback to Formspree if EmailJS fails
-      try {
-        console.log('Trying Formspree fallback...');
-        const response = await fetch('https://formspree.io/f/xpwzbqpb', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        });
-
-        if (response.ok) {
-          toast({
-            title: "Message sent successfully!",
-            description: "Thank you for your message. I'll get back to you soon.",
-          });
-          form.reset();
-        } else {
-          throw new Error('Both email services failed');
-        }
-      } catch (fallbackError) {
-        console.error('Formspree fallback also failed:', fallbackError);
-        toast({
-          title: "Failed to send message",
-          description: "Please try again or contact me directly via email.",
-          variant: "destructive",
-        });
-      }
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
