@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -10,14 +9,14 @@ import Footer from "./Footer";
 const CONTACT_INFO = [
   {
     icon: <Mail size={22} className="text-blue-400" />,
-    label: "anshulwork0102@gmail.com",
-    href: "mailto:anshulwork0102@gmail.com",
+    label: "itsdikshitvishnu@gmail.com",
+    href: "mailto:itsdikshitvishnu@gmail.com",
     className: "hover:underline",
   },
   {
     icon: <Phone size={22} className="text-green-400" />,
-    label: "+91 9870803265",
-    href: "tel:+919870803265",
+    label: "+91 7452914181",
+    href: "tel:+917452914181",
     className: "hover:underline",
   },
   {
@@ -67,15 +66,19 @@ const ContactSection = () => {
       message: formData.get('message'),
     };
 
+    console.log('Form data being sent:', data);
+
     try {
-      // Simulate email sending (you'll need to implement actual email service)
-      const response = await fetch('https://formspree.io/f/itsdikshitvishnu@gmail.com', {
+      // Updated Formspree endpoint with correct format
+      const response = await fetch('https://formspree.io/f/xpwzbqpb', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       });
+
+      console.log('Response status:', response.status);
 
       if (response.ok) {
         toast({
