@@ -57,7 +57,7 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-
+const formElement = e.currentTarget;
     const formData = new FormData(e.currentTarget);
     const data = {
       name: formData.get('name'),
@@ -92,7 +92,7 @@ const ContactSection = () => {
           description: "Thank you for your message. I'll get back to you soon.",
         });
         // Reset form
-        e.currentTarget.reset();
+     formElement.reset(); 
       } else {
         throw new Error('Failed to send message');
       }
