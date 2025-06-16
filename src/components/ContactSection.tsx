@@ -1,12 +1,11 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import Footer from "./Footer";
-
-// Removed dark mode toggle from this section.
 
 const CONTACT_INFO = [
   {
@@ -33,44 +32,88 @@ const SOCIALS = [
   {
     icon: <Github size={20} />,
     label: "GitHub",
-    href: "https://github.com/",
+    href: "https://github.com/its-dikshit",
   },
   {
     icon: <Linkedin size={20} />,
     label: "LinkedIn",
-    href: "https://linkedin.com/",
+    href: "https://www.linkedin.com/in/its-dikshit/",
   },
   {
     icon: <Twitter size={20} />,
     label: "Twitter",
-    href: "https://twitter.com/",
+    href: "https://x.com/vishnudixit_",
   },
   {
     icon: <Instagram size={20} />,
     label: "Instagram",
-    href: "https://instagram.com/",
+    href: "https://www.instagram.com/vishnudixit_/",
   },
 ];
 
 const ContactSection = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      subject: formData.get('subject'),
+      message: formData.get('message'),
+    };
+
+    try {
+      // Simulate email sending (you'll need to implement actual email service)
+      const response = await fetch('https://formspree.io/f/itsdikshitvishnu@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message sent successfully!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+        // Reset form
+        e.currentTarget.reset();
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="w-full bg-white dark:bg-background py-16 px-2 md:px-0 text-black dark:text-white relative">
       <div className="max-w-5xl mx-auto mb-8 px-2 flex items-center justify-between">
-        {/* Gradient heading */}
+        {/* Updated heading - no gradient in light mode, gradient in dark mode */}
         <h1
           className="
             text-4xl
             font-extrabold
             font-playfair
             tracking-tight
-            bg-gradient-to-r
-            from-blue-500
-            via-fuchsia-500
-            to-pink-500
-            bg-clip-text
-            text-transparent
-            dark:from-[#8bb9e6] dark:via-[#6297e2] dark:to-[#364b82]
+            text-black
+            dark:text-transparent
+            dark:bg-clip-text
             dark:bg-gradient-to-r
+            dark:from-[#8bb9e6] dark:via-[#6297e2] dark:to-[#364b82]
           "
         >
           Contact Me
@@ -124,10 +167,7 @@ const ContactSection = () => {
         <div className="bg-gray-100 dark:bg-neutral-900 rounded-xl p-8 shadow-md flex flex-col justify-center">
           <form
             className="flex flex-col gap-5"
-            onSubmit={e => {
-              e.preventDefault();
-              // TODO: Hook up form handling
-            }}
+            onSubmit={handleSubmit}
           >
             <div className="flex gap-4">
               <Input
@@ -169,6 +209,7 @@ const ContactSection = () => {
             />
             <Button
               type="submit"
+              disabled={isSubmitting}
               className="
                 w-full mt-2 rounded-lg font-semibold uppercase text-base
                 bg-blue-500 hover:bg-blue-600 transition
@@ -181,10 +222,14 @@ const ContactSection = () => {
                 dark:hover:to-[#253356]
                 dark:shadow-lg
                 dark:border-0
+                disabled:opacity-70
+                disabled:cursor-not-allowed
                 "
               style={{ minHeight: 44 }}
             >
-              <span className="relative z-10">Send Message</span>
+              <span className="relative z-10">
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </span>
             </Button>
           </form>
         </div>
