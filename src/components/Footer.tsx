@@ -12,7 +12,7 @@ const FOOTER_LINKS = [
 
 const CONTACT = {
   email: "itsdikshitvishnu@gmail.com",
-  phone: "+91 9870803265",
+  phone: "+91 7452914181",
   location: "Pune, Maharashtra",
 };
 
@@ -21,9 +21,9 @@ const Footer = () => (
     <div className="max-w-6xl mx-auto px-4 md:px-0 py-12 flex flex-col md:flex-row justify-between gap-10">
       {/* Left */}
       <div className="flex-1 min-w-[220px]">
-        <div className="text-2xl font-bold mb-1 text-blue-600">Anshul Vishnu</div>
+        <div className="text-2xl font-bold mb-1 text-blue-600">Vishnu Dixit</div>
         <p className="mb-4 text-base text-muted-foreground max-w-md">
-          Full Stack Developer passionate about creating delightful digital experiences and building scalable, elegant applications.
+          Data and AI/ML Engineer with a passion for crafting end-to-end pipelines, training production-grade models, and unlocking insights that power decision-making at scale.
         </p>
         <div className="flex gap-4 mt-2">
           <a href="https://github.com/its-dikshit" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors" aria-label="GitHub"><Github size={22} /></a>
@@ -57,7 +57,7 @@ const Footer = () => (
     </div>
     <Separator className="my-2" />
     <div className="max-w-6xl mx-auto px-4 md:px-0 py-4 flex flex-col md:flex-row justify-between text-sm text-muted-foreground">
-      <span>© 2025 Anshul Vishnu. All rights reserved.</span>
+      <span>© 2025 Vishnu Dixit. All rights reserved.</span>
     </div>
   </footer>
 );

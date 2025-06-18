@@ -89,14 +89,14 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
         <div className="w-full flex flex-col items-center pt-6 pb-4">
           <Avatar className="h-24 w-24 mb-1 shadow-lg border-4 border-blue-500 bg-white dark:bg-slate-800 transition-colors mt-0">
             <AvatarImage src="/lovable-uploads/354854ad-c8f8-4202-be31-5587a92fb34c.png" alt="Profile photo" />
-            <AvatarFallback>JF</AvatarFallback>
+            <AvatarFallback>VD</AvatarFallback>
           </Avatar>
           <h1 className="text-[1.32rem] font-extrabold mb-1 uppercase tracking-wide text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-[#b0bff7] dark:to-[#38b2fc] text-center leading-none">
-            Jackson Ford
+            Vishnu Dixit
           </h1>
           <div className="flex flex-row gap-2 items-center text-sm text-center mb-1 justify-center w-full">
             <span className="font-bold text-blue-500 tracking-widest dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-[#7ea7eb] dark:to-[#4e7dcf]">
-              UI/UX Designer
+              AI/ML Engineer
             </span>
             <ThemeToggleButton />
           </div>
@@ -133,7 +133,7 @@ const Sidebar: React.FC<SidebarProps> = ({ scrollRef }) => {
         </nav>
         <div className="mt-auto w-full flex flex-col gap-2 pb-7" style={{ fontFamily: "sans-serif" }}>
           <div className="text-xs text-gray-400 text-center mb-0 dark:text-gray-500">
-            © 2025 All rights reserved | Made with <span className="text-pink-500">❤</span>
+            © 2025 All rights reserved 
           </div>
           <div className="flex justify-center gap-2 mt-2">
             {["facebook", "twitter", "linkedin"].map((icon) => (

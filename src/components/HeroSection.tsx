@@ -37,15 +37,17 @@ const HeroSection = () => {
             Hello, I'm
           </p>
           <h1 className="text-4xl font-extrabold mb-2 text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-[#b0bff7] dark:via-[#617aff] dark:to-[#38b2fc] leading-tight">
-            Anshul Kumar
+            Vishnu Dixit
           </h1>
           <h2 className="text-xl font-bold text-blue-600 mb-3 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-[#86b4fc] dark:via-[#a290fc] dark:to-[#657ee8]">
             Software Developer
           </h2>
           <p className="text-base text-muted-foreground mb-4 dark:text-gray-300">
-            A 4th-year B.Tech CSE student passionate about becoming a skilled Machine Learning or Software Engineer.
-            I am proficient in data science, machine learning, and have hands-on experience with large language models, generative AI, and web technologies.
-            Outside of tech, I enjoy solving puzzles, reading tech articles, and playing outdoor sports.
+            I’m a final-year B.Tech Computer Science student with a strong passion for pursuing a career as a Machine 
+            Learning or Software Engineer. I have a solid foundation in data science and machine learning, complemented
+            by hands-on experience with large language models, generative AI, and modern web technologies. Outside of 
+            tech, I enjoy solving logical puzzles, exploring the latest advancements through tech articles, and writing
+            research papers focused on deep learning and cutting-edge AI applications.
           </p>
           <div className="flex flex-row gap-4 mb-2">
             <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">

@@ -4,15 +4,30 @@ import { Progress } from "@/components/ui/progress";
 
 // Adapted to match the sample: two columns, each with 3 skills, labels + percent + colored progress bars.
 const skills = [
-  { name: "Photoshop", value: 75, color: "bg-blue-400 dark:bg-blue-600", percentColor: "text-blue-500 dark:text-blue-300" },
-  { name: "HTML5", value: 85, color: "bg-yellow-400 dark:bg-yellow-500", percentColor: "text-yellow-500 dark:text-yellow-300" },
-  { name: "WordPress", value: 70, color: "bg-teal-500 dark:bg-teal-400", percentColor: "text-teal-600 dark:text-teal-300" },
-  { name: "jQuery", value: 60, color: "bg-red-400 dark:bg-red-500", percentColor: "text-red-500 dark:text-red-300" },
-  { name: "CSS3", value: 90, color: "bg-purple-400 dark:bg-purple-600", percentColor: "text-purple-600 dark:text-purple-300" },
-  { name: "SEO", value: 80, color: "bg-blue-900 dark:bg-blue-800", percentColor: "text-blue-900 dark:text-blue-300" },
+  { name: "Python", value: 95, color: "bg-blue-400 dark:bg-blue-600", percentColor: "text-blue-500 dark:text-blue-300" },
+  { name: "JavaScript", value: 80, color: "bg-yellow-400 dark:bg-yellow-500", percentColor: "text-yellow-500 dark:text-yellow-300" },
+  { name: "c++", value: 85, color: "bg-teal-500 dark:bg-teal-400", percentColor: "text-teal-600 dark:text-teal-300" },
+  { name: "SQL", value: 90, color: "bg-red-400 dark:bg-red-500", percentColor: "text-red-500 dark:text-red-300" },
+  { name: "Scikit-learn", value: 85, color: "bg-purple-400 dark:bg-purple-600", percentColor: "text-purple-600 dark:text-purple-300" },
+  { name: "TensorFlow", value: 85, color: "bg-blue-900 dark:bg-blue-800", percentColor: "text-blue-900 dark:text-blue-300" },
+  { name: "Keras", value: 80, color: "bg-yellow-400 dark:bg-yellow-500", percentColor: "text-yellow-500 dark:text-yellow-300" },
+  { name: "PyTorch", value: 80, color: "bg-teal-500 dark:bg-teal-400", percentColor: "text-teal-600 dark:text-teal-300" },
+  { name: "OpenCV", value: 80, color: "bg-red-400 dark:bg-red-500", percentColor: "text-red-500 dark:text-red-300" },
+  { name: "LLM", value: 75, color: "bg-purple-400 dark:bg-purple-600", percentColor: "text-purple-600 dark:text-purple-300" },
+  { name: "NLP", value: 75, color: "bg-blue-900 dark:bg-blue-800", percentColor: "text-blue-900 dark:text-blue-300" },
+  { name: "Pandas", value: 85, color: "bg-purple-400 dark:bg-purple-600", percentColor: "text-purple-600 dark:text-purple-300" },
+  { name: "NumPy", value: 85, color: "bg-blue-900 dark:bg-blue-800", percentColor: "text-blue-900 dark:text-blue-300" },
+  { name: "Matplotlib", value: 85, color: "bg-yellow-400 dark:bg-yellow-500", percentColor: "text-yellow-500 dark:text-yellow-300" },
+  { name: "React.js", value: 75, color: "bg-teal-500 dark:bg-teal-400", percentColor: "text-teal-600 dark:text-teal-300" },
+  { name: "Node.js", value: 75, color: "bg-red-400 dark:bg-red-500", percentColor: "text-red-500 dark:text-red-300" },
+  { name: "MongoDB", value: 80, color: "bg-purple-400 dark:bg-purple-600", percentColor: "text-purple-600 dark:text-purple-300" },
+  { name: "PostgreSQL", value: 85, color: "bg-blue-900 dark:bg-blue-800", percentColor: "text-blue-900 dark:text-blue-300" },
+  { name: "Git", value: 85, color: "bg-purple-400 dark:bg-purple-600", percentColor: "text-purple-600 dark:text-purple-300" },
+  { name: "Docker", value: 80, color: "bg-yellow-400 dark:bg-yellow-500", percentColor: "text-yellow-400 dark:text-yellow-300" },
+  
 ];
 
-const topText = "The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.";
+const topText = "My technical toolkit includes a blend of AI/ML frameworks, data science libraries, and web development technologies.";
 
 const SkillsSection = () => (
   <section
